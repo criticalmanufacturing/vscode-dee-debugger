@@ -1,0 +1,1396 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Browse, edit, sync and debug Critical Manufacturing MES DEE Actions from VS Code.">
+      
+      
+      
+      
+        <link rel="prev" href="../tutorial-first-dee-debug/">
+      
+      
+        <link rel="next" href="../editing-and-uploading/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Environments - DEE Debugger for VS Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#environments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DEE Debugger for VS Code" class="md-header__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEE Debugger for VS Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Environments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DEE Debugger for VS Code" class="md-nav__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.svg" alt="logo">
+
+    </a>
+    DEE Debugger for VS Code
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-first-dee-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial — your first DEE debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#creating-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating environments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switching-managing-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Switching, managing, testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-environment-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-environment credentials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-connection-type-am-i-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which connection type am I? (decision tree)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-type-setup-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-type setup notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per-type setup notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker-devcontainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker-in-docker (devcontainer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-inside-wsl-vs-code-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker inside WSL (VS Code on Windows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-kubectl-and-openshift-oc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kubernetes (kubectl) and OpenShift (oc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-bind-mount-instead-of-copying-usemount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a bind mount instead of copying (useMount)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-engine-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom engine command
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-each-field-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each field means
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-a-new-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying a new environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editing-and-uploading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing &amp; uploading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dee-vs-business-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DEE vs business debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-debugging-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How debugging works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#creating-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating environments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switching-managing-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Switching, managing, testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-environment-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-environment credentials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-connection-type-am-i-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which connection type am I? (decision tree)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-type-setup-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-type setup notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per-type setup notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker-devcontainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker-in-docker (devcontainer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-inside-wsl-vs-code-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker inside WSL (VS Code on Windows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-kubectl-and-openshift-oc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kubernetes (kubectl) and OpenShift (oc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-bind-mount-instead-of-copying-usemount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a bind mount instead of copying (useMount)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-engine-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom engine command
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-each-field-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each field means
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-a-new-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying a new environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="environments">Environments<a class="headerlink" href="#environments" title="Permanent link">¶</a></h1>
+<p>An <strong>environment</strong> is a named connection profile: the MES address, how the extension
+reaches the MES host container, and that environment's own stored credentials. All
+connection configuration goes through environments — there are no loose "host address"
+settings. Exactly one environment is <strong>active</strong> at a time; no active environment means
+"not connected", and the DEE Explorer shows its welcome view.</p>
+<p>You will typically have one environment per MES instance you work with: your local
+stack, a shared dev server, a test cluster.</p>
+<h2 id="creating-environments">Creating environments<a class="headerlink" href="#creating-environments" title="Permanent link">¶</a></h2>
+<p>Three ways:</p>
+<ul>
+<li><strong>DEE Debugger: Discover Environments…</strong> — probes your machine for reachable MES
+  stacks (local Docker, docker-in-docker devcontainers, local host processes), verifies
+  each with an API ping, and lets you connect in one click. Try this first.</li>
+<li><strong>DEE Debugger: Add Environment…</strong> — a guided wizard for every supported connection
+  type (listed below). Use this when discovery can't see your MES — remote machines,
+  Kubernetes, unusual setups.</li>
+<li>Editing the <strong>deeDebugger.environments</strong> setting directly (Settings → search
+  "DEE Debugger" → edit in <code>settings.json</code>). Handy for copying a colleague's working
+  profile — but remember that <strong>credentials are not in settings</strong>; each person sets
+  their own token.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> If you used an earlier version of the extension with the old flat
+connection settings, those were migrated automatically into an environment named
+<code>default</code>, credentials included. Nothing to do.</p>
+</blockquote>
+<h2 id="switching-managing-testing">Switching, managing, testing<a class="headerlink" href="#switching-managing-testing" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Switch:</strong> click the <strong>MES: \&lt;name&gt;</strong> Status Bar item, or run <strong>DEE Debugger:
+  Switch Environment…</strong>. The switcher shows which environments already have a stored
+  token (a key icon) and which don't (a warning icon). Switching to an environment
+  without a token prompts you for one.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>┌─ Switch MES environment ───────────────────────────────┐
+│ ✓ local        http://localhost · 🔑 token set         │
+│   test-cluster https://mes-test… · ⚠ no token          │
+│ ＋ Add environment…                                     │
+│ 🔍 Discover environments…                              │
+│ ⚙ Manage environments…                                 │
+└────────────────────────────────────────────────────────┘
+</code></pre></div>
+<ul>
+<li><strong>Manage:</strong> <strong>DEE Debugger: Manage Environments…</strong> lets you edit any field, rename
+  (stored credentials follow the new name automatically), or remove an environment
+  (its stored credentials are wiped). Removing the active environment switches you to
+  the first remaining one in the list (or disconnects you if none is left).</li>
+<li><strong>Test:</strong> <strong>DEE Debugger: Test Connection</strong> proves the address and the token with
+  one API call and reports success or a specific failure. It does not exercise the
+  container settings; <strong>Collect Support Bundle…</strong> probes those (its <code>engineProbe</code> line).</li>
+</ul>
+<p>Switching environments is clean: open sessions and debug registrations belonging to
+the previous environment are dropped or deactivated, and the tree reloads with the new
+environment's data.</p>
+<h2 id="per-environment-credentials">Per-environment credentials<a class="headerlink" href="#per-environment-credentials" title="Permanent link">¶</a></h2>
+<p>Each environment stores its <strong>own</strong> credentials in the operating system's secure
+storage — never in settings files, never in your repository.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/environments_mermaid_0_69eed23d.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/environments_mermaid_0_69eed23d.svg"></a></p>
+<p>Run <strong>DEE Debugger: Set Credentials…</strong> (or the <strong>Set Credentials</strong> button on the
+Explorer welcome view) any time to (re)choose how to authenticate — the method is always
+your choice:</p>
+<ul>
+<li><strong>Set Personal Access Token…</strong> — a long-lived token; best for daily work.</li>
+<li><strong>Set Access Token…</strong> — a bearer token copied from the browser DevTools; expires ~1 h.</li>
+</ul>
+<p><strong>Set Credentials…</strong>, both individual prompts, and <strong>Clear Credentials</strong> always apply to
+the <strong>active</strong> environment. Full copy-a-token steps:
+<a href="../getting-started/#step-4-provide-a-token">Getting started → provide a token</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Which token wins if both are stored</p>
+<p>If both an access token and a PAT are stored, the <strong>access token is used</strong>. Setting a
+<strong>Personal Access Token</strong> auto-clears any stored access token, so a new PAT takes
+effect immediately — no need to Clear Credentials first. The one case that still
+bites: pasting a browser <strong>access token</strong> <em>after</em> a PAT — the access token wins, and
+it keeps winning after it expires (every call then fails with an auth error). Set the
+PAT again (that removes the access token), or run <strong>Clear Credentials</strong> and set the one
+you want.</p>
+</div>
+<h2 id="which-connection-type-am-i-decision-tree">Which connection type am I? (decision tree)<a class="headerlink" href="#which-connection-type-am-i-decision-tree" title="Permanent link">¶</a></h2>
+<p>After the name and the MES address, the wizard asks how the extension reaches your MES
+host container. Follow
+the tree — the terminal check that decides most cases is <code>docker ps</code> <strong>run in the same
+VS Code window you'll use the extension from</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/environments_mermaid_1_3a10a29f.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/environments_mermaid_1_3a10a29f.svg"></a></p>
+<p>Details for each branch:</p>
+<p><strong>1. Does your MES host run in a container at all?</strong>
+- <strong>No — it's a process on this machine</strong> (rare; e.g. running the host service
+  directly): choose <strong>Local process</strong>. No container plumbing is involved; when you
+  attach, you pick the host process in VS Code's process picker.
+- <strong>Yes:</strong> continue.</p>
+<p><strong>2. Run <code>docker ps</code> in the same VS Code window. Do you see the MES containers
+(<code>custom_host</code> or <code>host</code>, <code>traefik</code>, <code>db</code>, …)?</strong>
+- <strong>Yes:</strong> choose <strong>Docker (local)</strong>. This is the simple case — host address is usually
+  <code>http://localhost</code>, container name <code>custom_host</code> (cmf-cli stacks) or <code>host</code>
+  (some other stacks). This is also what you get when you run VS Code <strong>inside</strong> the
+  devcontainer that runs the stack — from in there, everything is local.
+- <strong>You see only one container, whose image is named <code>vsc-…</code>:</strong> your stack runs on a Docker
+  daemon <strong>inside a devcontainer</strong> — continue to 3.
+- <strong>You see nothing, but the stack exists somewhere else:</strong> continue to 4.</p>
+<p><strong>3. Docker-in-docker (devcontainer) — the common cmf-cli setup.</strong> The stack was
+started with <code>cmf dev local stack up</code> <em>inside</em> a project devcontainer, so from outside
+that devcontainer, <code>docker ps</code> shows only the devcontainer itself and
+<code>http://localhost</code> doesn't answer. Nothing is broken — the stack just lives one layer
+deeper. Choose <strong>Docker-in-docker (devcontainer)</strong>. The wizard asks for the
+devcontainer's name and runs every container command through it. As the MES address,
+enter the devcontainer's IP (e.g. <code>http://172.17.0.2</code>). <strong>Discover Environments…</strong>
+fills in both for you. To find name and IP yourself:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>--format<span class="w"> </span><span class="s1">'{{.Names}}\t{{.Image}}'</span><span class="w">        </span><span class="c1"># the vsc-… image row is the devcontainer</span>
+docker<span class="w"> </span>inspect<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--format<span class="w"> </span><span class="s1">'{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Warning — devcontainer names and IPs are volatile.</strong> The devcontainer's <strong>name is
+randomly generated on every rebuild</strong>, and its <strong>IP can change on every restart</strong>.
+If an environment that worked yesterday suddenly can't connect or can't reach the
+container, re-check both and update the environment (<strong>Manage Environments…</strong>). To
+stop the name churn permanently, pin a name in the project's <code>devcontainer.json</code>:
+<code>"runArgs": ["--name", "my-mes-dev"]</code>.</p>
+</blockquote>
+<p>An alternative that avoids all of this: open VS Code <strong>inside</strong> the devcontainer and
+use a plain <strong>Docker (local)</strong> environment from there.</p>
+<p><strong>4. The stack is on another machine or in a cluster:</strong>
+- <strong>A remote machine's Docker daemon</strong> you can reach via a Docker context or an
+  <code>ssh://…</code> / <code>tcp://…</code> daemon address: choose <strong>Docker (remote)</strong> and provide the
+  context name or daemon URL.
+- <strong>You're on Windows and the stack runs inside a WSL distribution</strong> (and you are not
+  using VS Code's own WSL remoting): choose <strong>Docker inside WSL</strong> and name the
+  distribution (or leave it empty for the default one).
+- <strong>Kubernetes:</strong> choose <strong>Kubernetes (kubectl)</strong> and give the target pod or
+  deployment (and namespace). <code>kubectl</code> must be configured for the cluster in your
+  shell.
+- <strong>OpenShift:</strong> choose <strong>OpenShift (oc)</strong> — same as Kubernetes but using the <code>oc</code>
+  CLI and your <code>oc login</code> session.
+- <strong>Anything else</strong> — podman, nerdctl, an ssh wrapper script, a jump host: choose
+  <strong>Custom engine command…</strong> and provide the command prefix the extension should run
+  container operations through.</p>
+<h2 id="per-type-setup-notes">Per-type setup notes<a class="headerlink" href="#per-type-setup-notes" title="Permanent link">¶</a></h2>
+<p>Pick your type above, then read its notes here — they cover the prerequisites and the
+one-line check that proves the <em>engine path</em> works before you blame the extension.</p>
+<h3 id="local-docker">Local Docker<a class="headerlink" href="#local-docker" title="Permanent link">¶</a></h3>
+<ul>
+<li>Prerequisite: <code>docker ps</code> in the same environment VS Code runs in shows the MES containers.</li>
+<li>Verify the engine path: <code>docker exec custom_host echo ok</code></li>
+<li>Fully verified topology — this and docker-in-docker are the setups the extension is
+  routinely tested against.</li>
+</ul>
+<h3 id="docker-in-docker-devcontainer">Docker-in-docker (devcontainer)<a class="headerlink" href="#docker-in-docker-devcontainer" title="Permanent link">¶</a></h3>
+<ul>
+<li>See the volatility warning above (name/IP change on rebuild/restart).</li>
+<li>Verify the engine path: <code>docker exec &lt;devcontainer&gt; docker exec custom_host echo ok</code></li>
+<li>Fully verified topology.</li>
+</ul>
+<h3 id="remote-docker">Remote Docker<a class="headerlink" href="#remote-docker" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<blockquote>
+<p><strong>Warning:</strong> <code>hostAddress</code> must be the <strong>remote machine's</strong> MES address (e.g.
+<code>http://mes-dev.example:80</code>) — not <code>http://localhost</code>, which points at <em>your</em>
+machine. The wizard pre-fills your current address; change it.</p>
+</blockquote>
+</li>
+<li>Prerequisite: the context or daemon URL works without interactive prompts — use ssh
+  keys/agents, never passwords in the command. Check with:
+  <code>docker --context &lt;name&gt; ps</code> or <code>docker -H ssh://user@host ps</code></li>
+<li>Expect noticeably slower debug-file pushes and host-rewrite checks over ssh links;
+  operations time out after 30 s.</li>
+</ul>
+<h3 id="docker-inside-wsl-vs-code-on-windows">Docker inside WSL (VS Code on Windows)<a class="headerlink" href="#docker-inside-wsl-vs-code-on-windows" title="Permanent link">¶</a></h3>
+<ul>
+<li>Only needed when VS Code runs <strong>on Windows itself</strong>. If you use VS Code's WSL
+  remoting (green corner badge says <em>WSL</em>), you are already <em>inside</em> WSL — use plain
+  <strong>Docker (local)</strong> instead.</li>
+<li>Verify: <code>wsl -d &lt;distro&gt; docker ps</code> from a Windows terminal shows the MES containers.</li>
+</ul>
+<h3 id="kubernetes-kubectl-and-openshift-oc">Kubernetes (kubectl) and OpenShift (oc)<a class="headerlink" href="#kubernetes-kubectl-and-openshift-oc" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>k8sTarget</code> takes anything <code>kubectl exec</code>/<code>oc exec</code> accepts, e.g.
+  <code>deployment/host -n mes-dev</code> or a pod name plus <code>-n &lt;namespace&gt;</code>.</li>
+<li>Verify the engine path: <code>kubectl exec deployment/host -n mes-dev -- echo ok</code>
+  (or the <code>oc</code> equivalent; OpenShift also needs a live <code>oc login</code> session).</li>
+<li>
+<blockquote>
+<p><strong>Warning — debugging needs <code>SYS_PTRACE</code> in the pod spec.</strong> Unlike Docker, there
+is no privileged-exec escape hatch on Kubernetes: if the host pod's
+<code>securityContext</code> doesn't grant the <code>SYS_PTRACE</code> capability, <strong>attaching the
+debugger will fail</strong> even though browsing, editing and uploading work fine. Ask
+whoever owns the deployment to add
+<code>securityContext: { capabilities: { add: ["SYS_PTRACE"] } }</code> to the host
+container (dev/test clusters only). If the container runs as a non-root user (the
+product host image does), the added capability is dropped on exec, so the pod also
+needs <code>runAsUser: 0</code>, or the node needs <code>kernel.yama.ptrace_scope=0</code>. The extension
+checks this before attaching and names the missing piece.</p>
+</blockquote>
+</li>
+<li>vsdbg is installed into the pod's writable layer — a pod restart or redeploy removes
+  it; the extension simply offers to install it again.</li>
+<li>
+<blockquote>
+<p><strong>Warning — multiple host replicas break debugging.</strong> The debug registration lives
+in <strong>one replica's memory</strong> and your pushed file in <strong>one pod's filesystem</strong>, while
+a Service load-balances every request — so activation, file, trigger and debugger
+scatter across replicas and debugging "randomly works" (or fails with
+file-not-found compiles). While debugging, either scale down:
+<code>kubectl scale deployment/host --replicas=1 -n &lt;namespace&gt;</code>, or pin everything to
+one pod: <code>kubectl port-forward pod/&lt;host-pod&gt; 8080:8080</code>, set <code>hostAddress</code> to
+<code>http://localhost:8080</code>, point <code>k8sTarget</code> at that same pod, and trigger via
+<strong>Execute Action…</strong> (the MES UI still routes through the ingress). Details and
+diagrams: <a href="../how-debugging-works/#multi-replica-clusters-why-pinning-is-mandatory">How debugging works</a>.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="local-process">Local process<a class="headerlink" href="#local-process" title="Permanent link">¶</a></h3>
+<ul>
+<li>For a MES host running directly on your machine (no container). Debug source files
+  are used in place — no copying, no <code>sourcePathInHost</code>; attaching opens VS Code's
+  process picker.</li>
+</ul>
+<h3 id="using-a-bind-mount-instead-of-copying-usemount">Using a bind mount instead of copying (<code>useMount</code>)<a class="headerlink" href="#using-a-bind-mount-instead-of-copying-usemount" title="Permanent link">¶</a></h3>
+<p>Any Docker-based type can skip the file copying during debugging if the host container
+already <strong>bind-mounts your local DEEs folder</strong>: add a volume mapping your DEEs folder
+to a container path (e.g. in a compose override:
+<code>volumes: ["&lt;abs path to DEEs&gt;:/mnt/dees"]</code>), set <code>sourcePathInHost</code> to that container
+path and <code>useMount</code> to <code>true</code> in the environment. Debug-mode files are then shared
+directly — instant pushes, no streaming. Requires editing the stack definition and
+recreating the container, so most people stay with the default copying, which needs
+no stack changes. With <code>useMount</code>, only files inside the mounted (primary) DEEs folder can be
+debugged: <code>DeeDevBase</code> working copies under <code>.dee-debug/</code> and files in other Data packages are
+outside the mount, and the extension stops with a message naming the file.</p>
+<h3 id="custom-engine-command">Custom engine command<a class="headerlink" href="#custom-engine-command" title="Permanent link">¶</a></h3>
+<ul>
+<li>Any docker-CLI-compatible prefix works (<code>podman</code>, <code>nerdctl</code>, <code>ssh devbox docker</code>, a
+  wrapper script). The extension appends <code>exec …</code> to it for every container operation
+  (files are streamed through <code>exec</code> too, never copied with <code>cp</code>).</li>
+<li>Verify: <code>&lt;your command&gt; exec custom_host echo ok</code> from a terminal.</li>
+<li>Same trust rule as everything on this page: the command runs on your machine.</li>
+</ul>
+<blockquote>
+<p><strong>Note on maturity:</strong> local Docker and docker-in-docker are exercised against live
+MES stacks continuously. Remote Docker, WSL, Kubernetes, OpenShift and custom
+engines use the exact same mechanics and are covered by automated tests, but have
+seen less real-world mileage — if you hit a rough edge on one of them, capture a
+support bundle (<strong>DEE Debugger: Collect Support Bundle…</strong>) and report it.</p>
+</blockquote>
+<h2 id="what-each-field-means">What each field means<a class="headerlink" href="#what-each-field-means" title="Permanent link">¶</a></h2>
+<p>You normally never touch these — the wizard fills them — but <strong>Manage Environments…</strong>
+and <code>settings.json</code> expose them:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+<th>Default when omitted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>The environment's display name. Also the key under which its tokens are stored.</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>hostAddress</code></td>
+<td>Base URL of the MES API — what you'd put in a browser, e.g. <code>http://localhost</code> or <code>https://mes-test.example.com</code>.</td>
+<td><code>http://localhost</code></td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>How the host runs: <code>docker</code>, <code>kubernetes</code>, or <code>process</code>.</td>
+<td><code>docker</code></td>
+</tr>
+<tr>
+<td><code>containerName</code></td>
+<td>Name of the MES host container. cmf-cli stacks use <code>custom_host</code>; some other stacks use <code>host</code>.</td>
+<td><code>custom_host</code></td>
+</tr>
+<tr>
+<td><code>k8sTarget</code></td>
+<td>For Kubernetes/OpenShift: the pod or deployment (with namespace) to exec into.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>engineCommand</code></td>
+<td>The command prefix used for all container operations, replacing plain <code>docker</code>. Examples: <code>["docker","exec","-i","&lt;devcontainer&gt;","docker"]</code> for docker-in-docker; <code>["docker","--context","remote1"]</code>; <code>["wsl","-d","Ubuntu","docker"]</code>; <code>["oc"]</code>.</td>
+<td>plain <code>docker</code> / <code>kubectl</code></td>
+</tr>
+<tr>
+<td><code>sourcePathInHost</code></td>
+<td>Directory <strong>inside the host container</strong> where debug-mode source files are placed.</td>
+<td><code>/tmp/CriticalManufacturing/dee-debug</code></td>
+</tr>
+<tr>
+<td><code>useMount</code></td>
+<td>If the container already bind-mounts your local DEEs folder, set <code>true</code> so files don't need to be copied in.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>vsdbgPath</code></td>
+<td>Where the .NET debugger lives inside the container.</td>
+<td><code>/vsdbg/vsdbg</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Warning:</strong> The <code>engineCommand</code> is executed on your machine. Only use environment
+profiles from sources you trust — this is also why the extension refuses to run in
+untrusted workspaces. Avoid embedding passwords in a custom engine command; use ssh
+keys or contexts instead.</p>
+</blockquote>
+<h2 id="verifying-a-new-environment">Verifying a new environment<a class="headerlink" href="#verifying-a-new-environment" title="Permanent link">¶</a></h2>
+<p>After creating an environment, run <strong>DEE Debugger: Test Connection</strong>. If it fails, the
+message tells you whether the problem is reaching the address (stack down, wrong
+address, WSL networking) or authentication (token missing/expired). The
+<a href="../troubleshooting/#connection-problems">troubleshooting page</a> maps each failure to a
+fix.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../getting-started/">Getting started</a> — first connection walkthrough.</li>
+<li><a href="../debugging/">Debugging</a> — what the container plumbing is used for.</li>
+<li><a href="../troubleshooting/">Troubleshooting</a> — connection symptoms and fixes.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

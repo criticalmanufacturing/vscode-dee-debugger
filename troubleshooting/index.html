@@ -1,0 +1,1137 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Browse, edit, sync and debug Critical Manufacturing MES DEE Actions from VS Code.">
+      
+      
+      
+      
+        <link rel="prev" href="../sync/">
+      
+      
+        <link rel="next" href="../faq/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Troubleshooting - DEE Debugger for VS Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DEE Debugger for VS Code" class="md-header__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEE Debugger for VS Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DEE Debugger for VS Code" class="md-nav__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.svg" alt="logo">
+
+    </a>
+    DEE Debugger for VS Code
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-first-dee-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial — your first DEE debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editing-and-uploading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing &amp; uploading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dee-vs-business-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DEE vs business debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-debugging-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How debugging works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-open-the-dee-debugger-output-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: open the DEE Debugger output channel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-prove-the-basics-with-test-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: prove the basics with Test Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expired-tokens-the-1-hour-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expired tokens (the 1-hour problem)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-or-tree-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension or tree problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploads-and-compile-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uploads and compile errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-youre-stuck-collect-support-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When you're stuck: Collect Support Bundle
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-open-the-dee-debugger-output-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: open the DEE Debugger output channel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-prove-the-basics-with-test-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: prove the basics with Test Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expired-tokens-the-1-hour-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expired tokens (the 1-hour problem)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-or-tree-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension or tree problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploads-and-compile-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uploads and compile errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-youre-stuck-collect-support-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When you're stuck: Collect Support Bundle
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/troubleshooting_mermaid_0_962d6f39.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/troubleshooting_mermaid_0_962d6f39.svg"></a></p>
+<p>Find your <strong>symptom</strong> below. Two habits solve most problems fast:</p>
+<h2 id="step-1-open-the-dee-debugger-output-channel">Step 1: open the DEE Debugger output channel<a class="headerlink" href="#step-1-open-the-dee-debugger-output-channel" title="Permanent link">¶</a></h2>
+<p><strong>View → Output</strong>, then select <strong>DEE Debugger</strong> in the dropdown on the right. Every
+operation logs there — timestamped, with the environment and version information
+support needs, and with credentials automatically redacted. Many error notifications
+also offer to open it. When a fix below says "check the output channel", this is the
+place.</p>
+<h2 id="step-2-prove-the-basics-with-test-connection">Step 2: prove the basics with Test Connection<a class="headerlink" href="#step-2-prove-the-basics-with-test-connection" title="Permanent link">¶</a></h2>
+<p>Run <strong>DEE Debugger: Test Connection</strong> from the Command Palette. Its result splits the
+world in two: <em>"Could not reach …"</em> means a connectivity/address problem
+(<a href="#connection-problems">Connection problems</a>); an authentication error means a token
+problem (<a href="#expired-tokens-the-1-hour-problem">Expired tokens</a>).</p>
+<hr>
+<h2 id="expired-tokens-the-1-hour-problem">Expired tokens (the 1-hour problem)<a class="headerlink" href="#expired-tokens-the-1-hour-problem" title="Permanent link">¶</a></h2>
+<p><strong>Symptoms:</strong> everything worked, and now every operation fails with an authentication
+error (HTTP 401/403) and the hint <em>"The token may be expired — run 'DEE Debugger: Set
+Credentials…' to set a new one."</em>. Refresh fails, uploads fail, debug toggle fails.</p>
+<p><strong>Why it happens:</strong> on MES stacks that use the <strong>Security Portal</strong> — which includes
+the standard local development stack — browser-copied <strong>access tokens expire after
+1 hour</strong>. (Only stacks <em>without</em> the Security Portal issue ~14-day tokens.) One hour
+into your session, the token dies mid-work. This is the most common problem users
+report, and it is not a bug in your code or the extension.</p>
+<p><strong>Confirming it's the cause:</strong></p>
+<ul>
+<li>The error mentions 401/403 or "token may be expired".</li>
+<li>The output channel shows your token's type and expiry time on the failure — look
+  for the <code>[auth] stored credential: …</code> line. A negative "min from now" value means the
+  token has expired, and by how long.</li>
+<li>Operations that don't touch the MES (editing locally) still work; everything that
+  talks to the server fails.</li>
+</ul>
+<p><strong>Fix now:</strong> get a fresh token and run <strong>DEE Debugger: Set Access Token…</strong> (see
+<a href="../getting-started/#copying-an-access-token-from-the-browser">how to copy one from the browser</a>).</p>
+<p><strong>Fix forever:</strong> use a <strong>Personal Access Token</strong>. Generate it in the Security Portal →
+your user security page → <strong>Personal Access Tokens</strong>, then in VS Code:</p>
+<ol>
+<li><strong>DEE Debugger: Set Personal Access Token…</strong> — paste the PAT. (Setting a PAT
+   automatically clears any stored access token for that environment, so it takes effect
+   immediately — you don't need to Clear Credentials first.)</li>
+<li><strong>Refresh</strong> the tree to confirm.</li>
+</ol>
+<p><strong>Other token pitfalls:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause / fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A freshly copied token is rejected immediately</td>
+<td>It was truncated when copied — these tokens are 1–2 KB. In the browser DevTools, use right-click → <strong>Copy value</strong> on the Authorization header, and paste without the <code>Bearer</code> prefix.</td>
+</tr>
+<tr>
+<td>Set a browser <strong>access token</strong> after a PAT, still hitting auth errors</td>
+<td>A stored access token always takes precedence over the PAT — even after it has expired. Run <strong>Clear Credentials</strong>, then set the credential you actually want.</td>
+</tr>
+<tr>
+<td>Token works in one environment but not another</td>
+<td>Credentials are stored <strong>per environment</strong> — set the token while the right environment is active.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="connection-problems">Connection problems<a class="headerlink" href="#connection-problems" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause / fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>"Could not reach the MES host at …"</strong></td>
+<td>The stack is down (<code>docker ps</code> should show the MES containers — start it with <code>cmf dev local stack up</code>), or the host address is wrong. Verify from the same shell VS Code uses: <code>curl -s -o /dev/null -w '%{http_code}' &lt;address&gt;/api/ping</code> should print <code>200</code> (or <code>401</code> — that still proves routing).</td>
+</tr>
+<tr>
+<td>Same, but a debug session is active</td>
+<td>The host is probably <strong>paused at your breakpoint</strong> — a stopped debugger suspends the whole MES. Press Continue (<code>F5</code>) and retry. See <a href="../debugging/#while-you-are-paused-everything-freezes">everything freezes</a>.</td>
+</tr>
+<tr>
+<td>Works in a terminal, not in VS Code (or vice versa) — WSL setups</td>
+<td>Windows and WSL have different networks. Use the address that works for <code>curl</code> <strong>in the same environment VS Code runs in</strong> (check the bottom-left remote indicator: WSL window vs local window).</td>
+</tr>
+<tr>
+<td><strong>"returned a login page instead of data"</strong></td>
+<td>The address answered with an HTML page instead of the API. Usually the token was rejected (revoked or expired) and the forward-auth served the login page — set new credentials. If the token is fine, the address is wrong (wrong port, or a sub-path instead of the base URL the MES UI uses, e.g. <code>http://localhost</code>).</td>
+</tr>
+<tr>
+<td><strong>"returned unparseable JSON"</strong></td>
+<td>The address answered with something that is neither JSON nor an HTML page. Point the environment at the base URL the MES UI uses (e.g. <code>http://localhost</code>, not a sub-path).</td>
+</tr>
+<tr>
+<td>Devcontainer stack unreachable from outside; <code>docker ps</code> shows only the devcontainer (image <code>vsc-…</code>)</td>
+<td>Your stack runs docker-in-docker. Use the <strong>Docker-in-docker (devcontainer)</strong> environment type — and re-check the devcontainer's <strong>IP and name</strong>, which change on restart/rebuild. See <a href="../environments/#which-connection-type-am-i-decision-tree">the decision tree</a>.</td>
+</tr>
+<tr>
+<td>Everything broke after a devcontainer rebuild</td>
+<td>Same as above: new random container name, possibly new IP. Update the environment via <strong>Manage Environments…</strong>, or pin the name in <code>devcontainer.json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="extension-or-tree-problems">Extension or tree problems<a class="headerlink" href="#extension-or-tree-problems" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause / fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The extension doesn't activate / no DEE Debugger icon</td>
+<td>The Microsoft <strong>C# extension</strong> (<code>ms-dotnettools.csharp</code>) is missing — it's a required dependency. Check the Extensions view for an install error; on offline machines install it manually. Also: the workspace must be <strong>trusted</strong>, and a folder must be open.</td>
+</tr>
+<tr>
+<td>Tree is empty but Test Connection succeeds</td>
+<td>Check the tree isn't filtered (a filled filter icon in the DEE Explorer title = a text filter is active — click it and clear). Also check the rows at the top of the tree: <em>"N DEEs matched '…'"</em> (filter) and <em>"N disabled actions hidden"</em>.</td>
+</tr>
+<tr>
+<td><strong>A specific action doesn't appear in the tree</strong></td>
+<td>Draft (not-yet-effective) actions <strong>are</strong> shown, with a <code>not effective</code> badge. If it is missing it is either <strong>disabled</strong> (the tree shows a <em>"N disabled actions hidden — click to show"</em> row; click it or enable <strong>deeDebugger.showDisabledActions</strong>) or excluded by a <strong>text filter</strong>. See the <a href="../faq/#why-dont-i-see-all-actions-in-the-tree-or-in-sync">FAQ</a>.</td>
+</tr>
+<tr>
+<td><strong>An action never runs</strong></td>
+<td>A <code>not effective</code> badge is not the cause on its own: with no effective version the MES runs the highest version. Check that the action is <strong>enabled</strong> and belongs to an <strong>action group</strong> (MES UI). If you staged a new version, the effective one keeps running until you make the new one effective (right-click → <strong>Make Version Effective</strong>).</td>
+</tr>
+<tr>
+<td>Tree shows a different environment's data than expected</td>
+<td>Check the green <strong>Connected · …</strong> row at the top of the tree and the <strong>MES:</strong> status-bar item — you may be on another environment. Click to switch.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uploads-and-compile-errors">Uploads and compile errors<a class="headerlink" href="#uploads-and-compile-errors" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause / fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upload fails with errors in the <strong>Problems</strong> panel</td>
+<td>A real compile error in your code — click the entry to jump to the line, fix, re-upload. The raw server message is in the output channel.</td>
+</tr>
+<tr>
+<td>Upload refused: "marker problems"</td>
+<td>A marker line was deleted, duplicated, or edited. Don't fix by hand — copy your body code out, run <strong>Reload Action from MES</strong>, paste back inside the markers. See <a href="../editing-and-uploading/#the-marker-contract-what-you-may-and-may-not-edit">the marker contract</a>.</td>
+</tr>
+<tr>
+<td>Upload refused: changed on the MES since it was loaded</td>
+<td>Someone else saved the action meanwhile. See <a href="../editing-and-uploading/#concurrency-conflicts-someone-else-changed-it">concurrency conflicts</a>.</td>
+</tr>
+<tr>
+<td>Upload fails with an authentication error</td>
+<td>Token expired — <a href="#expired-tokens-the-1-hour-problem">see above</a>.</td>
+</tr>
+<tr>
+<td><strong>My local file changed on disk by itself</strong></td>
+<td>Not a bug: with debug mode on, the MES host <strong>rewrites the file</strong> when its regenerated wrapper differs from yours — typically because something was edited outside the markers (e.g. a hand-added <code>using</code>). Keep all edits inside the markers and use <code>UseReference(...)</code> for extra assemblies.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="debugging-problems">Debugging problems<a class="headerlink" href="#debugging-problems" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause / fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"spawn docker ENOENT" (or "docker: not found") on toggle/attach</td>
+<td>The <code>docker</code> CLI isn't on the PATH of the environment VS Code runs in. Verify <code>docker ps</code> in VS Code's integrated terminal. On WSL setups, docker must work <strong>inside</strong> the same remote.</td>
+</tr>
+<tr>
+<td>Toggle/attach fails with a container error naming the engine or container</td>
+<td>The environment's container plumbing is wrong — wrong container name (<code>custom_host</code> vs <code>host</code>), stale devcontainer name/IP, dead remote context. The error and output channel name the failing command; fix the <a href="../environments/#what-each-field-means">environment</a>.</td>
+</tr>
+<tr>
+<td>"vsdbg was not found … Install it now?"</td>
+<td>Normal on a fresh container — choose <strong>Install vsdbg</strong> and the extension installs the debugger. On MES 12 hosts the download runs inside the container (the image has <code>curl</code>), so the container needs internet access. MES 11.x images have no <code>curl</code>/<code>wget</code>, so the extension downloads vsdbg on your machine and streams it in — that needs internet plus <code>bash</code> + <code>tar</code> locally (on Windows, run VS Code in WSL). Either way, a wrong engine/container config also fails here (see previous row).</td>
+</tr>
+<tr>
+<td>Attach fails with <code>Unknown Error: 0x80131c08</code></td>
+<td>Wrong process picked — choose the <code>dotnet</code> process running <code>Cmf.Foundation.Services.HostService.dll</code>, never the first/wrapper process. If it persists, the container may lack debugging privileges; on Kubernetes the pod spec must allow <code>SYS_PTRACE</code>.</td>
+</tr>
+<tr>
+<td>Process picker is empty</td>
+<td>The debugger isn't installed in the container yet, or the engine/container settings point at the wrong place — check the output channel for the probe result.</td>
+</tr>
+<tr>
+<td><strong>Attach "works" but DEE breakpoints never bind, and no error appears anywhere</strong></td>
+<td>On a Linux-containerized host that is <strong>not patched</strong> for DEE debugging (#158143), every debug-mode execution fails to compile <em>inside the host</em> — nothing reaches the extension. Since 0.2.0 the host is probed when you enable debug mode or attach, and you are prompted to patch; if you chose <strong>Continue Anyway</strong> or turned the probe off (<code>deeDebugger.hostPatchCheck</code>), run <strong>Patch Host for DEE Debugging (dev/test)…</strong> now, then re-toggle debug mode.</td>
+</tr>
+<tr>
+<td><strong>Breakpoint never hits</strong> (action clearly runs)</td>
+<td>Almost always one of: (1) the action ran as a <strong>different user</strong> than your token — debug mode is per-user (<a href="../faq/#why-does-my-breakpoint-never-hit-even-though-the-action-runs">FAQ</a>); (2) the action hasn't executed since you enabled debug mode (breakpoints bind on first execution — hollow until then); (3) a <strong>load balancer</strong> sent the execution to another host instance — point the environment at one instance directly; (4) the host restarted and dropped the registration — accept the re-enable prompt, or toggle debug off/on.</td>
+</tr>
+<tr>
+<td>Executing a debug-mode action fails: "code is invalid … Unexpected error writing debug information -- 'Value cannot be null. (Parameter 'type')'"</td>
+<td>The <strong>Linux host debug-symbols bug</strong> (MES up to 11.x) — a product issue, not your code. The error notification offers <strong>Patch Host for Debugging…</strong>; accept it (the host restarts), then re-enable debug mode. See <a href="../debugging/#linux-mes-hosts-the-pdb-prerequisite">the Linux prerequisite</a>. After a stack recreate the extension offers the patch again.</td>
+</tr>
+<tr>
+<td>Debug worked, then silently stopped after a host/stack restart</td>
+<td>In-memory registration lost. The extension prompts to re-enable when it notices; if in doubt, toggle debug off and on, re-attach, and (Linux) re-apply the PDB patch after a recreate.</td>
+</tr>
+<tr>
+<td>MES UI / API / colleagues frozen while you debug</td>
+<td>You're paused at a breakpoint — the whole host process is suspended. Press Continue (<code>F5</code>). Expected behavior.</td>
+</tr>
+<tr>
+<td>Breakpoint binds but opens a <strong>read-only</strong> copy of the file</td>
+<td>The path mapping between container and your local folder drifted (e.g. the DEEs folder moved, or debug mode was enabled by version 0.2.0 or older). Toggle debug mode off and on to re-register, then re-attach.</td>
+</tr>
+<tr>
+<td>"Several local files belong to '…'" when opening an action</td>
+<td>Two DEEs folders (usually two Data packages) both contain <code>&lt;ActionName&gt;.cs</code>. Keep one, or list only one package in <strong>deeDebugger.deesFolder</strong>.</td>
+</tr>
+<tr>
+<td>"… exists but has no valid DEE markers — the extension will not overwrite it"</td>
+<td>A file with the action's name exists but its markers are damaged, or it is not a DEE file. Fix the markers or move the file, then open the action again.</td>
+</tr>
+<tr>
+<td>"… is outside …, which the debugger maps to …" when enabling debug mode</td>
+<td>The file is outside the folder the host path maps to. Keep DEE files inside the workspace folder. With <code>useMount</code>, only files inside the mounted DEEs folder can be debugged.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="when-youre-stuck-collect-support-bundle">When you're stuck: Collect Support Bundle<a class="headerlink" href="#when-youre-stuck-collect-support-bundle" title="Permanent link">¶</a></h2>
+<p>Before contacting support (or your internal tools team), run:</p>
+<p><strong>DEE Debugger: Collect Support Bundle…</strong></p>
+<p>The extension gathers everything a support engineer needs to diagnose without a
+screen-share — versions and platform, the active environment's configuration, token
+<em>metadata</em> (type, expiry — <strong>never the token itself</strong>), session and debug state, live
+connectivity probes, and the recent output-channel log (secrets redacted).</p>
+<p>It opens as a <strong>document in your editor</strong> — nothing is written to your project or sent
+anywhere automatically. Review it, remove anything you consider sensitive, then save
+it or paste it into your ticket.</p>
+<p>A good ticket = the support bundle + what you did (which command, which action) + what
+you expected + what happened.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
