@@ -29,6 +29,7 @@ DEE files in subfolders, in several Data packages, and in the cmf-cli `DeeDevBas
 - **Debug paths mirror your workspace.** A DEE file is placed in the host under its
   workspace-relative path, and attach maps `sourcePathInHost` to the workspace folder. If debug
   mode was enabled by 0.2.0, toggle it off and on once, then re-attach.
+- **Requires VS Code 1.145 or later** (was 1.90). Update VS Code before installing this version.
 
 ### Added
 - **Write Code Back to Source File** command (editor title on working copies, and the action's

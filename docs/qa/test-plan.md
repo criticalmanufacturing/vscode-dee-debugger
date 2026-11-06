@@ -7,7 +7,7 @@ mode, and restarts containers.
 
 ## Conventions & global preconditions
 
-- **Environment**: VS Code ≥ 1.90 with the built `.vsix` (or F5 dev host); `ms-dotnettools.csharp`
+- **Environment**: VS Code ≥ 1.145 with the built `.vsix` (or F5 dev host); `ms-dotnettools.csharp`
   installed; `docker` CLI working in the same shell VS Code runs in; a scratch MES stack the
   tester may break (`cmf dev local stack up`), host container `custom_host` (or `host`).
 - **Scratch data** (create in MES UI → Administration → DEE Actions before starting):

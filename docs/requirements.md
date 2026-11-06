@@ -142,7 +142,7 @@ of this project; "SHOULD" = high-value improvement; "COULD" = later.
 - N3: `src/core` is platform-agnostic (no `vscode` import) and unit-tested; VS Code layer thin.
   Target: potential future Visual Studio (VisualStudio.Extensibility) port reuses the spec/design.
 - N4: works on Linux/WSL/macOS/Windows dev machines; container ops shell out to `docker`/`kubectl`.
-- N5: minimum VS Code ^1.90; debugging requires the Microsoft C# extension (`ms-dotnettools.csharp`).
+- N5: minimum VS Code ^1.145; debugging requires the Microsoft C# extension (`ms-dotnettools.csharp`).
 - N6: CI: lint + typecheck + unit tests + package `.vsix` on every push.
 
 ## Explicit non-goals (v1)

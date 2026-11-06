@@ -4,9 +4,20 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Only rewrite a package.json range when the new version falls outside it.
+    versioning-strategy: increase-if-necessary
     groups:
+      # Majors come as separate PRs so one breaking bump cannot block the rest.
       dev-dependencies:
         dependency-type: development
+        update-types: [minor, patch]
+    ignore:
+      # typescript-eslint supports typescript <6.1.0; revisit when it supports 7.
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
+      # vsce rejects @types/vscode above engines.vscode: bump both together by hand.
+      - dependency-name: "@types/vscode"
+        update-types: [version-update:semver-major, version-update:semver-minor]
   - package-ecosystem: github-actions
     directory: /
     schedule:

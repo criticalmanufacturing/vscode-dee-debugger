@@ -29,7 +29,7 @@ the DEE Debugger for VS Code extension — including developers migrating from t
 
 **Required environment (per learner):**
 
-- VS Code 1.90+, the extension VSIX, and the Microsoft C# extension.
+- VS Code 1.145+, the extension VSIX, and the Microsoft C# extension.
 - A personal, disposable MES development stack (the course assumes the standard
   cmf-cli **docker-in-docker devcontainer** stack started with `cmf dev local stack up`)
   — never a shared or production instance.
