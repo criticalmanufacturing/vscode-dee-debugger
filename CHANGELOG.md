@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 — 2026-11-06
 
 DEE files in subfolders, in several Data packages, and in the cmf-cli `DeeDevBase` format
 ([ADR 0012](docs/adr/0012-dee-files-in-subfolders.md)).
