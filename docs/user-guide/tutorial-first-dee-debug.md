@@ -9,7 +9,7 @@ it doesn't, the linked troubleshooting row will unblock you.
 - A **development** MES stack you're allowed to play with (e.g.
   `cmf dev local stack up` in your customization project) — never a shared or
   production instance.
-- The extension VSIX, VS Code 1.90+, and a working `docker` CLI
+- The extension VSIX, VS Code 1.145+, and a working `docker` CLI
   (details: [Getting started — what you need](getting-started.md#what-you-need)).
 - A MES login that can open **Administration → DEE Actions** in the MES UI.
 

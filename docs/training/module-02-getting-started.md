@@ -38,7 +38,7 @@ flowchart LR
 Three things must be true before the extension works
 ([details](../user-guide/getting-started.md#what-you-need)):
 
-- **VS Code ≥ 1.90** with the VSIX installed (`code --install-extension
+- **VS Code ≥ 1.145** with the VSIX installed (`code --install-extension
   dee-debugger-<version>.vsix` or drag onto the Extensions view).
 - **The Microsoft C# extension** (`ms-dotnettools.csharp`) — it provides the .NET
   debugger. It's a declared dependency, so it installs automatically when VS Code has
