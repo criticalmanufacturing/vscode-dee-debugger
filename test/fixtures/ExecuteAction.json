@@ -1,0 +1,41 @@
+{
+ "$id": "1",
+ "$type": "Cmf.Foundation.BusinessOrchestration.DynamicExecutionEngineManagement.OutputObjects.ExecuteActionOutput, Cmf.Foundation.BusinessOrchestration",
+ "Output": {
+  "$typeCMF": "CMFMap",
+  "CMFMapData": [
+   [
+    "touched",
+    1
+   ]
+  ]
+ },
+ "Action": {
+  "$id": "2",
+  "$type": "Cmf.Foundation.Common.DynamicExecutionEngine.Action, Cmf.Foundation.Common",
+  "ActionCode": "UseReference(\"\", \"Cmf.Foundation.Common.Exceptions\");\n//Please start code here\n//var serviceProvider = (IServiceProvider)Input[\"ServiceProvider\"]; <-- uncomment, if needed\n\nInput[\"touched\"] = 1;\n",
+  "CreatedBy": "admin",
+  "ActionGroupActions": [],
+  "CreatedOn": "2026-08-14T16:29:40.473+00:00",
+  "AssemblyName": "cd956d63a65c4fab8ba5be379591da40.dll",
+  "Classification": "",
+  "Description": "",
+  "Id": "2608141531140000003",
+  "IsEnabled": true,
+  "LastOperationHistorySeq": "5",
+  "IsInDebugMode": true,
+  "LastServiceHistoryId": "2608141531140010450",
+  "IsSystemRule": false,
+  "LockType": 0,
+  "IsToHideHistory": false,
+  "ModifiedBy": "admin",
+  "Name": "SmokeTestDeeDebugger",
+  "ModifiedOn": "2026-08-14T17:15:53.27+00:00",
+  "SourceFilePath": "/tmp/CriticalManufacturing/dee-debug/SmokeTestDeeDebugger.cs",
+  "ObjectLocked": false,
+  "ValidationCode": "return true;",
+  "UniversalState": 3,
+  "Version": 3
+ },
+ "TotalRows": 0
+}

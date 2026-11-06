@@ -1,0 +1,12 @@
+{
+ "Code": {
+  "Name": "Val50012",
+  "SubCode": {
+   "Name": "50012"
+  }
+ },
+ "Reason": {
+  "Text": "The Action SmokeTestDeeDebugger code is invalid. Errors: \n[Action Code][SourceFile] [Line 1,11] Error: Invalid expression term ';'."
+ },
+ "Message": "The Action SmokeTestDeeDebugger code is invalid. Errors: \n[Action Code][SourceFile] [Line 1,11] Error: Invalid expression term ';'."
+}

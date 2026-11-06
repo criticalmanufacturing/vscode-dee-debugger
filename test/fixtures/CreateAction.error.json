@@ -1,0 +1,21 @@
+{
+  "Code": {
+    "IsPredefinedFault": false,
+    "IsReceiverFault": false,
+    "IsSenderFault": false,
+    "Name": "Val50018",
+    "Namespace": "",
+    "SubCode": {
+      "IsPredefinedFault": false,
+      "IsReceiverFault": false,
+      "IsSenderFault": false,
+      "Name": "50018",
+      "Namespace": "",
+      "SubCode": null
+    }
+  },
+  "Reason": {
+    "Text": "Value '1bad name' is invalid for property Name."
+  },
+  "Message": "Value '1bad name' is invalid for property Name."
+}

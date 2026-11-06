@@ -1,0 +1,21 @@
+{
+  "Code": {
+    "IsPredefinedFault": false,
+    "IsReceiverFault": false,
+    "IsSenderFault": false,
+    "Name": "Val50008",
+    "Namespace": "",
+    "SubCode": {
+      "IsPredefinedFault": false,
+      "IsReceiverFault": false,
+      "IsSenderFault": false,
+      "Name": "50008",
+      "Namespace": "",
+      "SubCode": null
+    }
+  },
+  "Reason": {
+    "Text": "The object QA_DeeDebugger_Create_20261018181351 of type Action is not Active."
+  },
+  "Message": "The object QA_DeeDebugger_Create_20261018181351 of type Action is not Active."
+}
