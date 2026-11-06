@@ -1,0 +1,717 @@
+{
+  "name": "dee-debugger",
+  "displayName": "DEE Debugger for Critical Manufacturing MES",
+  "description": "Browse, edit, sync and debug Critical Manufacturing MES DEE Actions and custom business code against a local or remote containerized host.",
+  "version": "0.2.0",
+  "publisher": "CriticalManufacturing",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/criticalmanufacturing/vscode-dee-debugger.git"
+  },
+  "homepage": "https://github.com/criticalmanufacturing/vscode-dee-debugger#readme",
+  "bugs": {
+    "url": "https://github.com/criticalmanufacturing/vscode-dee-debugger/issues"
+  },
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Other"
+  ],
+  "icon": "resources/icon.png",
+  "main": "./dist/extension.js",
+  "extensionDependencies": [
+    "ms-dotnettools.csharp"
+  ],
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "Environment profiles define commands the extension executes (engineCommand)."
+    },
+    "virtualWorkspaces": {
+      "supported": false
+    }
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "deeDebugger",
+          "title": "DEE Debugger",
+          "icon": "resources/dee.svg"
+        }
+      ]
+    },
+    "views": {
+      "deeDebugger": [
+        {
+          "id": "deeDebugger.explorer",
+          "name": "DEE Explorer",
+          "icon": "resources/dee.svg"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "deeDebugger.explorer",
+        "when": "deeDebugger.connectionState == 'needs-credentials'",
+        "contents": "Environment selected, but it has no stored credentials yet.\n[Set Credentials](command:deeDebugger.setCredentials)\nA Personal Access Token from the Security Portal user page is recommended; a browser-copied access token also works (expires after ~1 hour).\n[Switch Environment](command:deeDebugger.switchEnvironment)"
+      },
+      {
+        "view": "deeDebugger.explorer",
+        "when": "deeDebugger.connectionState == 'ready'",
+        "contents": "Connected, but the DEE actions could not be loaded (or the MES has none).\n[Refresh](command:deeDebugger.refresh)\n[Show Output Log](command:deeDebugger.showOutput)\nIf the log shows a 401 or a login page, the token expired: [Set Credentials](command:deeDebugger.setCredentials). Wrong stack? [Switch Environment](command:deeDebugger.switchEnvironment)."
+      },
+      {
+        "view": "deeDebugger.explorer",
+        "when": "deeDebugger.connectionState != 'needs-credentials' && deeDebugger.connectionState != 'ready'",
+        "contents": "Connect to a development or test MES to browse, edit and debug its DEE actions.\n[Discover Environments](command:deeDebugger.discoverEnvironments)\nFinds local Docker, docker-in-docker (devcontainer) and host-process stacks on this machine.\n[Add Environment Manually](command:deeDebugger.addEnvironment)\nFor remote Docker, Kubernetes/OpenShift or a custom engine command. You will be asked for credentials once connected.\n[Settings](command:workbench.action.openSettings?%5B%22deeDebugger%22%5D)\nNew here? [Open Getting Started](command:deeDebugger.openGettingStarted) walks through connect → open → debug in five steps."
+      }
+    ],
+    "commands": [
+      {
+        "command": "deeDebugger.refresh",
+        "title": "Refresh",
+        "category": "DEE Debugger",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "deeDebugger.createAction",
+        "title": "New DEE Action…",
+        "category": "DEE Debugger",
+        "icon": "$(add)"
+      },
+      {
+        "command": "deeDebugger.openAction",
+        "title": "Open DEE Action",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.uploadAction",
+        "title": "Save Action to MES (Compile & Save)",
+        "category": "DEE Debugger",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "deeDebugger.reloadAction",
+        "title": "Reload Action from MES",
+        "category": "DEE Debugger",
+        "icon": "$(discard)"
+      },
+      {
+        "command": "deeDebugger.writeBackToSource",
+        "title": "Write Code Back to Source File",
+        "category": "DEE Debugger",
+        "icon": "$(arrow-swap)"
+      },
+      {
+        "command": "deeDebugger.toggleDebugMode",
+        "title": "Toggle DEE Debug Mode",
+        "category": "DEE Debugger",
+        "icon": "$(debug)"
+      },
+      {
+        "command": "deeDebugger.enableDebugMode",
+        "title": "Enable DEE Debug Mode",
+        "category": "DEE Debugger",
+        "icon": "$(bug)"
+      },
+      {
+        "command": "deeDebugger.disableDebugMode",
+        "title": "Disable DEE Debug Mode",
+        "category": "DEE Debugger",
+        "icon": "$(debug-disconnect)"
+      },
+      {
+        "command": "deeDebugger.attach",
+        "title": "Attach Debugger to MES Host",
+        "category": "DEE Debugger",
+        "icon": "$(debug-alt)"
+      },
+      {
+        "command": "deeDebugger.installVsdbg",
+        "title": "Install vsdbg in Host Container",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.patchHostForDebugging",
+        "title": "Patch Host for DEE Debugging (dev/test)…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.restoreHostDll",
+        "title": "Restore Host DLL (undo debug patch)…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.uploadActionNewVersion",
+        "title": "Save Action to MES as New Version…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.makeVersionEffective",
+        "title": "Make Version Effective",
+        "category": "DEE Debugger",
+        "icon": "$(pass)"
+      },
+      {
+        "command": "deeDebugger.switchEnvironment",
+        "title": "Switch Environment…",
+        "category": "DEE Debugger",
+        "icon": "$(server-environment)"
+      },
+      {
+        "command": "deeDebugger.addEnvironment",
+        "title": "Add Environment…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.discoverEnvironments",
+        "title": "Discover Environments…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.manageEnvironments",
+        "title": "Manage Environments…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.executeAction",
+        "title": "Execute Action…",
+        "category": "DEE Debugger",
+        "icon": "$(play)"
+      },
+      {
+        "command": "deeDebugger.showVersionHistory",
+        "title": "Show Version History…",
+        "category": "DEE Debugger",
+        "icon": "$(history)"
+      },
+      {
+        "command": "deeDebugger.openInMesUi",
+        "title": "Open in MES UI",
+        "category": "DEE Debugger",
+        "icon": "$(link-external)"
+      },
+      {
+        "command": "deeDebugger.searchActions",
+        "title": "Filter Actions…",
+        "category": "DEE Debugger",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "deeDebugger.searchActionsFiltered",
+        "title": "Filter Actions (filter active)…",
+        "category": "DEE Debugger",
+        "icon": "$(filter-filled)"
+      },
+      {
+        "command": "deeDebugger.syncCompare",
+        "title": "Sync: Compare Local DEEs with MES",
+        "category": "DEE Debugger",
+        "icon": "$(git-compare)"
+      },
+      {
+        "command": "deeDebugger.syncUpload",
+        "title": "Sync: Upload Local Changes to MES",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.syncDownload",
+        "title": "Sync: Download Changes from MES",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.setCredentials",
+        "title": "Set Credentials…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.setAccessToken",
+        "title": "Set Access Token…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.setPersonalAccessToken",
+        "title": "Set Personal Access Token…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.clearCredentials",
+        "title": "Clear Credentials",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.testConnection",
+        "title": "Test Connection",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.expandAll",
+        "title": "Expand All",
+        "category": "DEE Debugger",
+        "icon": "$(expand-all)"
+      },
+      {
+        "command": "deeDebugger.toggleShowDisabledActions",
+        "title": "Toggle Show Disabled Actions",
+        "category": "DEE Debugger",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "deeDebugger.collectSupportBundle",
+        "title": "Collect Support Bundle…",
+        "category": "DEE Debugger"
+      },
+      {
+        "command": "deeDebugger.showOutput",
+        "title": "Show Output Log",
+        "category": "DEE Debugger",
+        "icon": "$(output)"
+      },
+      {
+        "command": "deeDebugger.openGettingStarted",
+        "title": "Open Getting Started",
+        "category": "DEE Debugger",
+        "icon": "$(book)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "deeDebugger.switchEnvironment",
+          "when": "view == deeDebugger.explorer",
+          "group": "0_env@0"
+        },
+        {
+          "command": "deeDebugger.refresh",
+          "when": "view == deeDebugger.explorer",
+          "group": "navigation@1"
+        },
+        {
+          "command": "deeDebugger.createAction",
+          "when": "view == deeDebugger.explorer",
+          "group": "navigation@2"
+        },
+        {
+          "command": "deeDebugger.searchActions",
+          "when": "view == deeDebugger.explorer && !deeDebugger.filterActive",
+          "group": "navigation@3"
+        },
+        {
+          "command": "deeDebugger.searchActionsFiltered",
+          "when": "view == deeDebugger.explorer && deeDebugger.filterActive",
+          "group": "navigation@3"
+        },
+        {
+          "command": "deeDebugger.attach",
+          "when": "view == deeDebugger.explorer",
+          "group": "navigation@4"
+        },
+        {
+          "command": "deeDebugger.syncCompare",
+          "when": "view == deeDebugger.explorer",
+          "group": "1_sync@0"
+        },
+        {
+          "command": "deeDebugger.discoverEnvironments",
+          "when": "view == deeDebugger.explorer",
+          "group": "0_env@1"
+        },
+        {
+          "command": "deeDebugger.addEnvironment",
+          "when": "view == deeDebugger.explorer",
+          "group": "0_env@2"
+        },
+        {
+          "command": "deeDebugger.manageEnvironments",
+          "when": "view == deeDebugger.explorer",
+          "group": "0_env@3"
+        },
+        {
+          "command": "deeDebugger.syncUpload",
+          "when": "view == deeDebugger.explorer",
+          "group": "1_sync@1"
+        },
+        {
+          "command": "deeDebugger.syncDownload",
+          "when": "view == deeDebugger.explorer",
+          "group": "1_sync@2"
+        },
+        {
+          "command": "deeDebugger.expandAll",
+          "when": "view == deeDebugger.explorer",
+          "group": "2_view@0"
+        },
+        {
+          "command": "deeDebugger.testConnection",
+          "when": "view == deeDebugger.explorer",
+          "group": "0_env@4"
+        },
+        {
+          "command": "deeDebugger.toggleShowDisabledActions",
+          "when": "view == deeDebugger.explorer",
+          "group": "2_view@1"
+        },
+        {
+          "command": "deeDebugger.showOutput",
+          "when": "view == deeDebugger.explorer",
+          "group": "3_help@0"
+        },
+        {
+          "command": "deeDebugger.collectSupportBundle",
+          "when": "view == deeDebugger.explorer",
+          "group": "3_help@1"
+        },
+        {
+          "command": "deeDebugger.openGettingStarted",
+          "when": "view == deeDebugger.explorer",
+          "group": "3_help@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "deeDebugger.enableDebugMode",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/ && viewItem !~ /-debug/",
+          "group": "inline@1"
+        },
+        {
+          "command": "deeDebugger.disableDebugMode",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction-debug/",
+          "group": "inline@1"
+        },
+        {
+          "command": "deeDebugger.uploadAction",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "inline@2"
+        },
+        {
+          "command": "deeDebugger.reloadAction",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "inline@3"
+        },
+        {
+          "command": "deeDebugger.makeVersionEffective",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction.*-draft/",
+          "group": "inline@4"
+        },
+        {
+          "command": "deeDebugger.reloadAction",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "1_actions@3"
+        },
+        {
+          "command": "deeDebugger.uploadActionNewVersion",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "1_actions@4"
+        },
+        {
+          "command": "deeDebugger.makeVersionEffective",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction.*-draft/",
+          "group": "1_actions@5"
+        },
+        {
+          "command": "deeDebugger.showVersionHistory",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "2_info@1"
+        },
+        {
+          "command": "deeDebugger.executeAction",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "2_info@2"
+        },
+        {
+          "command": "deeDebugger.enableDebugMode",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/ && viewItem !~ /-debug/",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "deeDebugger.disableDebugMode",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction-debug/",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "deeDebugger.openInMesUi",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "2_info@0"
+        },
+        {
+          "command": "deeDebugger.writeBackToSource",
+          "when": "view == deeDebugger.explorer && viewItem =~ /deeAction/",
+          "group": "1_actions@6"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "deeDebugger.openAction",
+          "when": "false"
+        },
+        {
+          "command": "deeDebugger.reloadAction",
+          "when": "false"
+        },
+        {
+          "command": "deeDebugger.searchActionsFiltered",
+          "when": "false"
+        },
+        {
+          "command": "deeDebugger.enableDebugMode",
+          "when": "false"
+        },
+        {
+          "command": "deeDebugger.disableDebugMode",
+          "when": "false"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "deeDebugger.writeBackToSource",
+          "when": "resourcePath =~ /[\\\\/]\\.dee-debug[\\\\/]/",
+          "group": "navigation@9"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DEE Debugger",
+      "properties": {
+        "deeDebugger.environments": {
+          "type": "array",
+          "scope": "machine-overridable",
+          "default": [],
+          "markdownDescription": "Named MES environments — the only connection configuration. Each is self-contained (host address + how to reach the host container; omitted fields use built-in defaults) and keeps its **own stored credentials**. Create them with *Discover Environments…* or *Add Environment…*; select with `deeDebugger.activeEnvironment`.",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Profile name (also scopes the stored tokens)."
+              },
+              "hostAddress": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "docker",
+                  "process",
+                  "kubernetes"
+                ]
+              },
+              "containerName": {
+                "type": "string"
+              },
+              "k8sTarget": {
+                "type": "string"
+              },
+              "engineCommand": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sourcePathInHost": {
+                "type": "string"
+              },
+              "useMount": {
+                "type": "boolean"
+              },
+              "vsdbgPath": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "deeDebugger.activeEnvironment": {
+          "type": "string",
+          "scope": "machine-overridable",
+          "default": "",
+          "description": "Name of the environment in use (empty = not connected). Usually changed via the status-bar item or the explorer."
+        },
+        "deeDebugger.deesFolder": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "default": "",
+          "markdownDescription": "Workspace-relative folder(s) holding DEE `.cs` files — a string, or a list for several Data packages (e.g. `[\"Cmf.Custom.Data/DEEs\", \"Cmf.Custom.Data.Extra/DEEs\"]`). Subfolders are searched too. Empty = auto-detect every folder containing `DeeDevBase.cs` (or a `DEEs` folder with a `.csproj`), falling back to `.dees`. New actions are created in the first folder. Files in the older `DeeDevBase` format are never rewritten: they are opened and debugged through a working copy in the self-ignoring `.dee-debug/` folder."
+        },
+        "deeDebugger.showDisabledActions": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show disabled actions in the DEE Explorer. Not-yet-effective (draft) versions are always shown, with a 'not effective' badge."
+        },
+        "deeDebugger.hostSourceMap": {
+          "type": "object",
+          "scope": "machine-overridable",
+          "default": {},
+          "additionalProperties": {
+            "type": "string"
+          },
+          "markdownDescription": "Source mapping for custom-business breakpoints in **Attach Debugger to MES Host**. The debugger opens the source paths recorded in each deployed PDB at build time. A local `cmf build` records your repo's absolute paths, so when you debug with the repo at the same path **no map is needed**. Map a recorded build root to your repo only when they differ — the DLL was built in another folder or container, or on CI — e.g. `{ \"/path/used/at/build\": \"${workspaceFolder}\" }`. Empty = the default `{ \"/src\": \"${workspaceFolder}\" }`, which covers PDBs built inside a container at `/src` and is harmless otherwise."
+        },
+        "deeDebugger.hostAppDir": {
+          "type": "string",
+          "scope": "machine-overridable",
+          "default": "/opt/app",
+          "markdownDescription": "Directory inside the MES host container that holds `Cmf.Foundation.Common.dll`, used by **Patch Host for DEE Debugging** (the #158143 PortablePdb workaround). The default `/opt/app` matches the standard cmf host image; change it only if your host lays the app out elsewhere."
+        },
+        "deeDebugger.hostPatchCheck": {
+          "type": "string",
+          "enum": [
+            "prompt",
+            "off"
+          ],
+          "default": "prompt",
+          "scope": "machine-overridable",
+          "markdownDescription": "Before enabling DEE Debug Mode or attaching to a containerized host, probe whether the host is patched for DEE debugging (the Linux PDB bug, #158143) and **prompt** to patch it when it is not (`prompt`, default). `off` skips the probe; the patch is then offered only when a compile error reaches the extension."
+        },
+        "deeDebugger.attachAfterEnablingDebug": {
+          "type": "string",
+          "enum": [
+            "ask",
+            "always",
+            "never"
+          ],
+          "default": "ask",
+          "enumDescriptions": [
+            "Ask whether to attach the debugger right after enabling debug mode (unless one is already attached).",
+            "Attach automatically after enabling debug mode.",
+            "Never offer; attach manually."
+          ],
+          "description": "What happens right after DEE Debug Mode is enabled on an action."
+        },
+        "deeDebugger.expectedDotnetMajor": {
+          "type": "integer",
+          "default": 0,
+          "markdownDescription": "Expected .NET runtime major for the MES host, used to warn on a mismatch when attaching (v10 hosts run .NET 6, v11 run .NET 8, v12 run .NET 10). `0` = **auto** — infer from your local `Cmf.Custom.*` project's target framework. Set to `6`, `8`, or `10` to force the check when auto-detection can't determine it."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "deeDebugger.gettingStarted",
+        "title": "Debug MES DEE actions from VS Code",
+        "description": "Connect to a development MES, open a DEE action, enable live debug mode and attach — five steps, about ten minutes.",
+        "steps": [
+          {
+            "id": "connect",
+            "title": "Connect to a MES environment",
+            "description": "Pick the stack you develop against. Discovery finds local Docker and devcontainer stacks automatically.\n[Discover Environments](command:deeDebugger.discoverEnvironments)\n[Add Environment Manually](command:deeDebugger.addEnvironment)",
+            "media": {
+              "markdown": "resources/walkthrough/connect.md"
+            },
+            "completionEvents": [
+              "onCommand:deeDebugger.discoverEnvironments",
+              "onCommand:deeDebugger.addEnvironment",
+              "onContext:deeDebugger.connectionState == 'ready'"
+            ]
+          },
+          {
+            "id": "credentials",
+            "title": "Authenticate with a Personal Access Token",
+            "description": "Each environment keeps its own token in the OS keychain.\n[Set Credentials…](command:deeDebugger.setCredentials)",
+            "media": {
+              "markdown": "resources/walkthrough/credentials.md"
+            },
+            "completionEvents": [
+              "onContext:deeDebugger.connectionState == 'ready'"
+            ]
+          },
+          {
+            "id": "open",
+            "title": "Browse and open an action",
+            "description": "Click an action in the DEE Explorer to download and open it as a .cs file with IntelliSense.\n[Refresh DEE Explorer](command:deeDebugger.refresh)",
+            "media": {
+              "markdown": "resources/walkthrough/open.md"
+            },
+            "completionEvents": [
+              "onCommand:deeDebugger.openAction"
+            ]
+          },
+          {
+            "id": "debug",
+            "title": "Enable debug mode and attach",
+            "description": "Enable DEE Debug Mode on the action, then attach the debugger to the host. Breakpoints bind when the action runs.\n[Attach Debugger to MES Host](command:deeDebugger.attach)",
+            "media": {
+              "markdown": "resources/walkthrough/debug.md"
+            },
+            "completionEvents": [
+              "onCommand:deeDebugger.attach"
+            ]
+          },
+          {
+            "id": "sync",
+            "title": "Keep your Actions project in sync",
+            "description": "Compare, download and upload DEEs in bulk against your Cmf.Custom.Data/DEEs folder.\n[Sync: Compare Local DEEs with MES](command:deeDebugger.syncCompare)",
+            "media": {
+              "markdown": "resources/walkthrough/sync.md"
+            },
+            "completionEvents": [
+              "onCommand:deeDebugger.syncCompare",
+              "onCommand:deeDebugger.syncDownload",
+              "onCommand:deeDebugger.syncUpload"
+            ]
+          },
+          {
+            "id": "help",
+            "title": "Know where to look when something is off",
+            "description": "The output log answers most questions; the support bundle answers the rest.\n[Show Output Log](command:deeDebugger.showOutput)",
+            "media": {
+              "markdown": "resources/walkthrough/help.md"
+            },
+            "completionEvents": [
+              "onCommand:deeDebugger.showOutput",
+              "onCommand:deeDebugger.collectSupportBundle"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc --noEmit && node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "eslint src test",
+    "package": "vsce package --no-dependencies --allow-missing-repository",
+    "vscode:prepublish": "npm run build",
+    "test:e2e": "npm run build && node esbuild.mjs --e2e && DONT_PROMPT_WSL_INSTALL=1 xvfb-run -a vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^3.1.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.9.0",
+    "mocha": "^11.8.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.0.0"
+  },
+  "keywords": [
+    "Critical Manufacturing",
+    "MES",
+    "DEE",
+    "Dynamic Execution Engine",
+    "debugger",
+    "Industry 4.0"
+  ],
+  "galleryBanner": {
+    "color": "#1a3a5c",
+    "theme": "dark"
+  }
+}

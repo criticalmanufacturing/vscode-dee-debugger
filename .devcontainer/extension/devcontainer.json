@@ -1,0 +1,32 @@
+// Extension development container: build, test, lint, package, and F5 the VS Code extension.
+// Pick this from "Dev Containers: Reopen in Container" → "DEE Debugger — Extension Dev".
+{
+  "name": "DEE Debugger — Extension Dev",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
+  "features": {
+    // .NET SDKs matched to the MES lines this extension manages: v10 → .NET 6, v11 → .NET 8,
+    // v12 → .NET 10. All three are installed so you can build/work against any line (the bundled
+    // host-pdb-patcher targets net6 — the lowest — and rolls forward to run on .NET 8/10 hosts).
+    "ghcr.io/devcontainers/features/dotnet:2": { "version": "8.0", "additionalVersions": "6.0,10.0" },
+    // The extension shells out to `docker` to reach containerized MES hosts; expose the host
+    // daemon so those paths work from inside the container.
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-dotnettools.csharp",
+        "editorconfig.editorconfig"
+      ],
+      "settings": {
+        "editor.formatOnSave": false,
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  },
+  // xvfb is required by `npm run test:e2e` (headless VS Code extension-host tests);
+  // then install dependencies.
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y xvfb && npm install",
+  "remoteUser": "node"
+}

@@ -1,0 +1,58 @@
+{
+ "$id": "1",
+ "$type": "Cmf.Foundation.BusinessOrchestration.DynamicExecutionEngineManagement.OutputObjects.GetAllActionGroupsOutput, Cmf.Foundation.BusinessOrchestration",
+ "ActionGroups": [
+  {
+   "$id": "2",
+   "$type": "Cmf.Foundation.Common.DynamicExecutionEngine.ActionGroup, Cmf.Foundation.Common",
+   "ActionGroupActions": [],
+   "CreatedBy": "System",
+   "Description": "Action Group Description",
+   "CreatedOn": "2018-05-11T15:19:04.383+00:00",
+   "Name": "GenericServiceManagement.GenericServiceManagementOrchestration.CloneObject.Pre",
+   "Id": "1805111619030000001",
+   "LastOperationHistorySeq": "639072003747300000",
+   "LastServiceHistoryId": "2602201558410000019",
+   "LockType": 0,
+   "ModifiedBy": "System",
+   "ModifiedOn": "2026-02-20T16:06:14.73+00:00",
+   "ObjectLocked": false,
+   "UniversalState": 0
+  },
+  {
+   "$id": "3",
+   "$type": "Cmf.Foundation.Common.DynamicExecutionEngine.ActionGroup, Cmf.Foundation.Common",
+   "ActionGroupActions": [],
+   "CreatedBy": "System",
+   "Description": "Action Group Description",
+   "CreatedOn": "2018-05-11T15:19:04.417+00:00",
+   "Name": "GenericServiceManagement.GenericServiceManagementOrchestration.CreateObject.Pre",
+   "Id": "1805111619030000002",
+   "LastOperationHistorySeq": "639072003749033333",
+   "LastServiceHistoryId": "2602201558410000019",
+   "LockType": 0,
+   "ModifiedBy": "System",
+   "ModifiedOn": "2026-02-20T16:06:14.903+00:00",
+   "ObjectLocked": false,
+   "UniversalState": 0
+  },
+  {
+   "$id": "4",
+   "$type": "Cmf.Foundation.Common.DynamicExecutionEngine.ActionGroup, Cmf.Foundation.Common",
+   "ActionGroupActions": [],
+   "CreatedBy": "System",
+   "Description": "Action Group Description",
+   "CreatedOn": "2018-05-11T15:19:04.433+00:00",
+   "Name": "Rule.RuleOrchestration.CreateRule.Pre",
+   "Id": "1805111619030000003",
+   "LastOperationHistorySeq": "639072003847033333",
+   "LastServiceHistoryId": "2602201558410000019",
+   "LockType": 0,
+   "ModifiedBy": "System",
+   "ModifiedOn": "2026-02-20T16:06:24.703+00:00",
+   "ObjectLocked": false,
+   "UniversalState": 0
+  }
+ ],
+ "TotalRows": 132
+}

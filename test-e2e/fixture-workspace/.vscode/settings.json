@@ -1,0 +1,6 @@
+{
+  "deeDebugger.environments": [
+    { "name": "envA", "hostAddress": "http://e2e-a.invalid" },
+    { "name": "envB", "hostAddress": "http://e2e-b.invalid" }
+  ]
+}

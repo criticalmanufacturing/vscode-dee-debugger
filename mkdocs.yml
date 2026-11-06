@@ -1,0 +1,77 @@
+# Public documentation site — MkDocs Material, mirroring the cmf-cli docs stack.
+# Only the user guide is published; internal docs (reviews, research, ADRs, QA)
+# stay repo-only.
+site_name: DEE Debugger for VS Code
+site_description: Browse, edit, sync and debug Critical Manufacturing MES DEE Actions from VS Code.
+repo_url: https://github.com/criticalmanufacturing/vscode-dee-debugger
+edit_uri: edit/main/docs/user-guide/
+docs_dir: docs/user-guide
+site_dir: site
+
+theme:
+  name: material
+  logo: assets/icon.svg
+  favicon: assets/icon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+
+plugins:
+  - search
+  # Pre-render mermaid diagrams to SVG images at build time (needs mmdc / mermaid-cli on
+  # PATH), so they become real <img> elements that glightbox can open full screen + zoom.
+  # useMaxWidth:false → the SVGs carry fixed pixel dimensions, so small diagrams render at
+  # their natural size (not stretched to the column); big ones still cap at 100% via the theme.
+  - mermaid-to-svg:
+      # Chromium (via puppeteer) needs --no-sandbox under CI/root and many containers.
+      puppeteer_config: docs/puppeteer-config.json
+      mermaid_config:
+        flowchart:
+          useMaxWidth: false
+        sequence:
+          useMaxWidth: false
+        state:
+          useMaxWidth: false
+        class:
+          useMaxWidth: false
+        er:
+          useMaxWidth: false
+  - glightbox
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - tables
+  - toc:
+      permalink: true
+
+
+nav:
+  - Overview: index.md
+  - Getting started: getting-started.md
+  - Tutorial — your first DEE debug: tutorial-first-dee-debug.md
+  - Environments: environments.md
+  - Editing & uploading: editing-and-uploading.md
+  - Debugging: debugging.md
+  - DEE vs business debugging: dee-vs-business-debugging.md
+  - How debugging works: how-debugging-works.md
+  - Sync: sync.md
+  - Troubleshooting: troubleshooting.md
+  - FAQ: faq.md

@@ -1,0 +1,31 @@
+{
+ "$id": "1",
+ "$type": "Cmf.Foundation.BusinessOrchestration.DynamicExecutionEngineManagement.OutputObjects.GetActionFullCodeOutput, Cmf.Foundation.BusinessOrchestration",
+ "Action": {
+  "$id": "2",
+  "$type": "Cmf.Foundation.Common.DynamicExecutionEngine.Action, Cmf.Foundation.Common",
+  "ActionCode": "UseReference(\"\", \"Cmf.Foundation.Common.Exceptions\");\n//Please start code here\n//var serviceProvider = (IServiceProvider)Input[\"ServiceProvider\"]; <-- uncomment, if needed\n\nInput[\"touched\"] = 1;\n",
+  "CreatedBy": "admin",
+  "ActionGroupActions": [],
+  "CreatedOn": "2026-08-14T16:29:40.473+00:00",
+  "Classification": "",
+  "Description": "",
+  "Id": "2608141531140000003",
+  "IsEnabled": true,
+  "LastOperationHistorySeq": "5",
+  "IsInDebugMode": false,
+  "LastServiceHistoryId": "2608141531140010450",
+  "IsSystemRule": false,
+  "LockType": 0,
+  "IsToHideHistory": false,
+  "ModifiedBy": "admin",
+  "Name": "SmokeTestDeeDebugger",
+  "ModifiedOn": "2026-08-14T17:15:53.27+00:00",
+  "ObjectLocked": false,
+  "ValidationCode": "return true;",
+  "UniversalState": 3,
+  "Version": 3
+ },
+ "FullCode": "using System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing System.Collections.ObjectModel;\nusing System.Linq;\nusing System.Reflection;\nusing System.Runtime.Serialization;\nusing System.Transactions;\nusing System.Text.RegularExpressions;\nusing Cmf.Foundation.Common;\nusing Cmf.Foundation.Common.Abstractions;\nusing Cmf.Foundation.Common.Base;\nusing Cmf.Foundation.Configuration;\nusing Cmf.Foundation.Configuration.Abstractions;\nusing Cmf.Foundation.Security;\nusing Cmf.Foundation.Security.Abstractions;\nusing Cmf.Foundation.BusinessObjects;\nusing Cmf.Foundation.BusinessObjects.Abstractions;\nusing Microsoft.Extensions.DependencyInjection;\nusing Cmf.Navigo.BusinessObjects;\nusing Cmf.Navigo.BusinessObjects.Abstractions;\nusing Cmf.Foundation.Common.Exceptions;\n\r\nnamespace Cmf.Foundation.Common.DynamicExpressionEvaluator.Runtime\r\n{\r\n    public class RuleEvaluator_U21va2VUZXN0RGVlRGVidWdnZXI : Cmf.Foundation.Common.DynamicExecutionEngine.RuleEvaluatorAdapter\r\n    {\r\n        public override Dictionary<string, Object> EvaluateRule(Dictionary<string, Object> Input)\r\n        {\r\n            /** START OF USER-DEFINED CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/\r\nUseReference(\"\", \"Cmf.Foundation.Common.Exceptions\");\n//Please start code here\n//var serviceProvider = (IServiceProvider)Input[\"ServiceProvider\"]; <-- uncomment, if needed\n\nInput[\"touched\"] = 1;\n\r\n            /** END OF USER-DEFINED CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/\r\n            return Input;\r\n        }\r\n\r\n        public override Boolean ValidateAction(Dictionary<string, Object> Input)\r\n        {\r\n            /** START OF USER-DEFINED VALIDATION CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/\r\nreturn true;\r\n            /** END OF USER-DEFINED VALIDATION CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/\r\n        }\r\n    }\r\n}",
+ "TotalRows": 0
+}

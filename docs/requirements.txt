@@ -1,0 +1,7 @@
+# Python deps to build the MkDocs documentation site.
+#   pip install -r docs/requirements.txt
+# Note: mkdocs-mermaid-to-svg also requires the mermaid CLI (`mmdc`) on PATH — install it with
+#   npm install -g @mermaid-js/mermaid-cli
+mkdocs-material
+mkdocs-glightbox
+mkdocs-mermaid-to-svg

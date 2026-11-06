@@ -1,0 +1,30 @@
+{
+ "$id": "1",
+ "$type": "Cmf.Foundation.BusinessOrchestration.DynamicExecutionEngineManagement.OutputObjects.GetActionByNameOutput, Cmf.Foundation.BusinessOrchestration",
+ "Action": {
+  "$id": "2",
+  "$type": "Cmf.Foundation.Common.DynamicExecutionEngine.Action, Cmf.Foundation.Common",
+  "ActionCode": "UseReference(\"\", \"Cmf.Foundation.Common.Exceptions\");\n//Please start code here\n//var serviceProvider = (IServiceProvider)Input[\"ServiceProvider\"]; <-- uncomment, if needed\n\nInput[\"touched\"] = 1;\n",
+  "CreatedBy": "admin",
+  "ActionGroupActions": [],
+  "CreatedOn": "2026-08-14T16:29:40.473+00:00",
+  "Classification": "",
+  "Description": "",
+  "Id": "2608141531140000003",
+  "IsEnabled": true,
+  "LastOperationHistorySeq": "5",
+  "IsInDebugMode": false,
+  "LastServiceHistoryId": "2608141531140010697",
+  "IsSystemRule": false,
+  "LockType": 0,
+  "IsToHideHistory": false,
+  "ModifiedBy": "admin",
+  "Name": "SmokeTestDeeDebugger",
+  "ModifiedOn": "2026-08-14T19:10:03.76+00:00",
+  "ObjectLocked": false,
+  "ValidationCode": "return true;",
+  "UniversalState": 3,
+  "Version": 3
+ },
+ "TotalRows": 0
+}
