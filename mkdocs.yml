@@ -10,7 +10,7 @@ site_dir: site
 
 theme:
   name: material
-  logo: assets/icon.svg
+  logo: assets/icon.png
   favicon: assets/icon.png
   palette:
     - media: "(prefers-color-scheme: light)"

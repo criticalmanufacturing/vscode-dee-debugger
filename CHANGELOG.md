@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **The extension icon is now the Critical Manufacturing logo**, the same one the other
+  Critical Manufacturing extensions use. The Marketplace banner and the documentation site
+  use it too.
+
 ## 0.3.0 — 2026-11-06
 
 DEE files in subfolders, in several Data packages, and in the cmf-cli `DeeDevBase` format
