@@ -1,5 +1,5 @@
 {
-  "name": "dee-debugger",
+  "name": "cm-dee-debugger",
   "displayName": "DEE Debugger for Critical Manufacturing MES",
   "description": "Browse, edit, sync and debug Critical Manufacturing MES DEE Actions and custom business code against a local or remote containerized host.",
   "version": "0.3.0",

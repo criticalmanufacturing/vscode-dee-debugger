@@ -19,7 +19,7 @@ it doesn't, the linked troubleshooting row will unblock you.
 
 1. Install the extension: in the Extensions view, search for **DEE Debugger** and select
    **Install**, or run
-   `code --install-extension CriticalManufacturing.dee-debugger --pre-release`. The
+   `code --install-extension CriticalManufacturing.cm-dee-debugger --pre-release`. The
    Microsoft C# extension installs alongside it as a dependency. Offline, use the VSIX
    ([Getting started — Step 1](getting-started.md#step-1-install-the-extension)).
 2. Open a folder — ideally your customization project (the one with

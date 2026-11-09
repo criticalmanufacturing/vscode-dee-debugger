@@ -74,7 +74,7 @@ describe("Getting Started command", () => {
     __resetCommands();
     const opened: unknown[][] = [];
     vscodeMock.commands.registerCommand("workbench.action.openWalkthrough", (...args: unknown[]) => void opened.push(args));
-    registerCommands({ subscriptions: [], extension: { id: "CriticalManufacturing.dee-debugger" }, globalState: { get: () => undefined, update: async () => undefined } } as never, {
+    registerCommands({ subscriptions: [], extension: { id: "CriticalManufacturing.cm-dee-debugger" }, globalState: { get: () => undefined, update: async () => undefined } } as never, {
       getClient: () => ({}) as never,
       explorer: {} as never,
       sessions: new SessionStore(),
@@ -84,7 +84,7 @@ describe("Getting Started command", () => {
       serverContent: {} as never,
     });
     await __getCommand("deeDebugger.openGettingStarted")!();
-    expect(opened).toEqual([["CriticalManufacturing.dee-debugger#deeDebugger.gettingStarted", false]]);
+    expect(opened).toEqual([["CriticalManufacturing.cm-dee-debugger#deeDebugger.gettingStarted", false]]);
   });
 });
 

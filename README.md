@@ -32,15 +32,15 @@ host runs. Successor to the DEE Explorer add-in for Visual Studio.
 ## Quick start
 
 1. Install **DEE Debugger for Critical Manufacturing MES** from the
-   [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.dee-debugger)
+   [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.cm-dee-debugger)
    (a pre-release while the version is 0.x), or from a terminal:
 
    ```bash
-   code --install-extension CriticalManufacturing.dee-debugger --pre-release
+   code --install-extension CriticalManufacturing.cm-dee-debugger --pre-release
    ```
 
    On a machine without Marketplace access, install the VSIX from GitHub Releases instead:
-   `code --install-extension dee-debugger-<version>.vsix`.
+   `code --install-extension cm-dee-debugger-<version>.vsix`.
 
 2. Open your customization project, the folder that contains `Cmf.Custom.Data/DEEs`.
 3. Select the **DEE Debugger** icon, then **Discover Environments**, pick your stack, and

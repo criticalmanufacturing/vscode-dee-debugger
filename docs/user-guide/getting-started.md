@@ -21,7 +21,7 @@ flowchart LR
 
 - **VS Code 1.145 or newer.**
 - **The extension**, from the VS Code Marketplace. On a machine without Marketplace
-  access, use the VSIX (`dee-debugger-<version>.vsix`) from GitHub Releases.
+  access, use the VSIX (`cm-dee-debugger-<version>.vsix`) from GitHub Releases.
 - **The Microsoft C# extension** (`ms-dotnettools.csharp`). It provides the .NET
   debugger the extension uses. It is declared as a dependency, so VS Code installs it
   automatically when it has Marketplace access; on an offline machine,
@@ -44,7 +44,7 @@ In the Extensions view, search for **DEE Debugger**, open **DEE Debugger for Cri
 Manufacturing MES** by Critical Manufacturing, and select **Install**. Or, from a terminal:
 
 ```bash
-code --install-extension CriticalManufacturing.dee-debugger --pre-release
+code --install-extension CriticalManufacturing.cm-dee-debugger --pre-release
 ```
 
 While the version is 0.x the extension is published as a **pre-release**, and VS Code keeps it
@@ -54,23 +54,27 @@ Without Marketplace access, get the `.vsix` from the project's GitHub Releases p
 drag it onto the Extensions view, or run:
 
 ```bash
-code --install-extension dee-debugger-<version>.vsix
+code --install-extension cm-dee-debugger-<version>.vsix
 ```
 
 A new **DEE Debugger** icon appears on the Activity Bar. If it doesn't, run
 **Developer: Reload Window**.
 
-!!! note "Replacing a VSIX or pilot build"
-    If you installed a VSIX before, including an **internal pilot build** (early testers had a
-    `0.3.0` pilot), uninstall it first. A Marketplace release with the same or a lower version
-    number is not installed over it:
+!!! note "Replacing an earlier build"
+    Builds before 0.3.0, including the **internal pilot builds**, used the extension ID
+    `criticalmanufacturing.dee-debugger`. VS Code treats that as a different extension, and both
+    can't run together because they register the same commands. Uninstall it first:
 
     ```bash
     code --uninstall-extension criticalmanufacturing.dee-debugger
-    code --install-extension CriticalManufacturing.dee-debugger --pre-release
+    code --install-extension CriticalManufacturing.cm-dee-debugger --pre-release
     ```
 
-    Environments and stored tokens survive (they are keyed by the extension id).
+    Your environments are kept, because they live in your settings. Stored tokens are not:
+    run **Set Credentials** again for each environment.
+
+    If you installed a `cm-dee-debugger` VSIX, a Marketplace release with the same or a lower
+    version number is not installed over it. Uninstall it the same way first.
     Working inside **WSL or a Remote-SSH / devcontainer window**: run the command in that
     remote's terminal so the extension lands on the remote side, where `docker` is.
 

@@ -37,7 +37,7 @@ suite("DEE Debugger extension (real VS Code)", () => {
 
   test("activates and registers its commands", async function () {
     this.timeout(30_000);
-    const extension = vscode.extensions.getExtension("criticalmanufacturing.dee-debugger");
+    const extension = vscode.extensions.getExtension("criticalmanufacturing.cm-dee-debugger");
     assert.ok(extension, "extension not found in the test instance");
     await extension.activate();
     assert.ok(extension.isActive, "extension failed to activate");

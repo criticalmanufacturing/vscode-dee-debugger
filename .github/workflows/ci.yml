@@ -30,11 +30,11 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
-      - run: npx vsce package --no-dependencies --allow-missing-repository -o dee-debugger.vsix
+      - run: npx vsce package --no-dependencies --allow-missing-repository -o cm-dee-debugger.vsix
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: dee-debugger-vsix
-          path: dee-debugger.vsix
+          name: cm-dee-debugger-vsix
+          path: cm-dee-debugger.vsix
 
   e2e:
     runs-on: ubuntu-latest
@@ -76,10 +76,10 @@ jobs:
           if [ "$PKG" != "${{ github.ref_name }}" ]; then
             echo "Tag ${{ github.ref_name }} != package.json $PKG"; exit 1
           fi
-      - run: npx vsce package --no-dependencies --allow-missing-repository $VSCE_PRE_RELEASE -o dee-debugger-${{ github.ref_name }}.vsix
+      - run: npx vsce package --no-dependencies --allow-missing-repository $VSCE_PRE_RELEASE -o cm-dee-debugger-${{ github.ref_name }}.vsix
       - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
-          files: dee-debugger-*.vsix
+          files: cm-dee-debugger-*.vsix
           generate_release_notes: true
           prerelease: ${{ env.VSCE_PRE_RELEASE != '' }}
 
@@ -106,6 +106,6 @@ jobs:
       - name: Download release VSIX
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release download "${{ github.ref_name }}" -R "${{ github.repository }}" -p 'dee-debugger-*.vsix'
+        run: gh release download "${{ github.ref_name }}" -R "${{ github.repository }}" -p 'cm-dee-debugger-*.vsix'
       - name: Publish to Marketplace
-        run: npx vsce publish --oidc $VSCE_PRE_RELEASE --packagePath dee-debugger-${{ github.ref_name }}.vsix
+        run: npx vsce publish --oidc $VSCE_PRE_RELEASE --packagePath cm-dee-debugger-${{ github.ref_name }}.vsix
