@@ -10,6 +10,12 @@ on:
 permissions:
   contents: read
 
+# Release channel. "--pre-release" packages and publishes the VSIX as a Marketplace
+# pre-release and marks the GitHub Release as a prerelease. Set to "" for a stable
+# release; the stable version must differ from every published pre-release version.
+env:
+  VSCE_PRE_RELEASE: "--pre-release"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -70,18 +76,36 @@ jobs:
           if [ "$PKG" != "${{ github.ref_name }}" ]; then
             echo "Tag ${{ github.ref_name }} != package.json $PKG"; exit 1
           fi
-      - run: npx vsce package --no-dependencies --allow-missing-repository -o dee-debugger-${{ github.ref_name }}.vsix
+      - run: npx vsce package --no-dependencies --allow-missing-repository $VSCE_PRE_RELEASE -o dee-debugger-${{ github.ref_name }}.vsix
       - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           files: dee-debugger-*.vsix
           generate_release_notes: true
-      # Marketplace publish (opt-in): define the VSCE_PAT repository secret to enable.
-      - name: Publish to Marketplace
+          prerelease: ${{ env.VSCE_PRE_RELEASE != '' }}
+
+  # Marketplace publish (opt-in): set the repository variable MARKETPLACE_PUBLISH=true
+  # once the publisher has a Trusted Publishing policy for this repository, workflow
+  # file (ci.yml) and environment (marketplace). Authentication is GitHub OIDC; no
+  # token or secret is stored.
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v') && vars.MARKETPLACE_PUBLISH == 'true'
+    needs: [release]
+    runs-on: ubuntu-latest
+    environment: marketplace
+    permissions:
+      contents: read
+      id-token: write # OIDC token exchanged for a short-lived Marketplace credential
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Publish the exact VSIX attached to the GitHub Release, not a rebuild.
+      - name: Download release VSIX
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
-        run: |
-          if [ -n "$VSCE_PAT" ]; then
-            npx vsce publish --packagePath dee-debugger-*.vsix -p "$VSCE_PAT"
-          else
-            echo "VSCE_PAT not set — skipping marketplace publish."
-          fi
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download "${{ github.ref_name }}" -R "${{ github.repository }}" -p 'dee-debugger-*.vsix'
+      - name: Publish to Marketplace
+        run: npx vsce publish --oidc $VSCE_PRE_RELEASE --packagePath dee-debugger-${{ github.ref_name }}.vsix

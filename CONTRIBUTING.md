@@ -67,6 +67,20 @@ User-facing documentation (`docs/user-guide/`, `docs/training/`, README) does no
 - CI must be green: lint, typecheck, unit, package, and e2e.
 - Update `CHANGELOG.md` under an `Unreleased` heading.
 
+## Releasing
+
+1. In a release PR, set the version in `package.json` and rename the `Unreleased`
+   heading in `CHANGELOG.md` to that version.
+2. After it merges, push the tag `v<version>` (it must match `package.json`).
+3. CI creates the GitHub Release with the VSIX and, when the repository variable
+   `MARKETPLACE_PUBLISH` is `true`, publishes that VSIX to the VS Code Marketplace through
+   Trusted Publishing (GitHub OIDC; no token is stored). The job runs in the `marketplace`
+   environment.
+
+The `VSCE_PRE_RELEASE` setting in `.github/workflows/ci.yml` selects the channel: 0.x
+versions ship as pre-releases. Use an odd minor version for pre-releases and an even one
+for stable releases; the Marketplace rejects a version number that was already published.
+
 ## Reporting problems
 
 Attach a support bundle: run **DEE Debugger: Collect Support Bundle…** in VS Code,

@@ -9,7 +9,7 @@ it doesn't, the linked troubleshooting row will unblock you.
 - A **development** MES stack you're allowed to play with (e.g.
   `cmf dev local stack up` in your customization project) — never a shared or
   production instance.
-- The extension VSIX, VS Code 1.145+, and a working `docker` CLI
+- VS Code 1.145+ and a working `docker` CLI
   (details: [Getting started — what you need](getting-started.md#what-you-need)).
 - A MES login that can open **Administration → DEE Actions** in the MES UI.
 
@@ -17,9 +17,11 @@ it doesn't, the linked troubleshooting row will unblock you.
 
 ## Part 1 — Install and open a workspace (≈ 5 min)
 
-1. Install the extension: drag the `.vsix` onto the Extensions view, or
-   `code --install-extension dee-debugger-<version>.vsix`. The Microsoft C# extension
-   installs alongside it as a dependency.
+1. Install the extension: in the Extensions view, search for **DEE Debugger** and select
+   **Install**, or run
+   `code --install-extension CriticalManufacturing.dee-debugger --pre-release`. The
+   Microsoft C# extension installs alongside it as a dependency. Offline, use the VSIX
+   ([Getting started — Step 1](getting-started.md#step-1-install-the-extension)).
 2. Open a folder — ideally your customization project (the one with
    `Cmf.Custom.Data/DEEs`); any empty folder also works for this tutorial.
 3. If VS Code asks about Workspace Trust, choose **Trust**.
