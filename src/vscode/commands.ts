@@ -753,7 +753,7 @@ export function registerCommands(context: vscode.ExtensionContext, deps: Command
   };
 
   register("deeDebugger.openGettingStarted", async () => {
-    const id = `${context.extension?.id ?? "CriticalManufacturing.dee-debugger"}#deeDebugger.gettingStarted`;
+    const id = `${context.extension?.id ?? "CriticalManufacturing.cm-dee-debugger"}#deeDebugger.gettingStarted`;
     await vscode.commands.executeCommand("workbench.action.openWalkthrough", id, false);
   });
 
@@ -1790,7 +1790,7 @@ export function registerCommands(context: vscode.ExtensionContext, deps: Command
     );
     const bundle = {
       collectedAt: new Date().toISOString(),
-      extension: `dee-debugger v${(context.extension?.packageJSON as { version?: string } | undefined)?.version ?? "?"}`,
+      extension: `cm-dee-debugger v${(context.extension?.packageJSON as { version?: string } | undefined)?.version ?? "?"}`,
       vscode: vscode.version,
       platform: `${process.platform}/${process.arch}`,
       remote: vscode.env.remoteName ?? null,

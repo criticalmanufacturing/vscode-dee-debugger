@@ -39,7 +39,7 @@ Three things must be true before the extension works
 ([details](../user-guide/getting-started.md#what-you-need)):
 
 - **VS Code ≥ 1.145** with the VSIX installed (`code --install-extension
-  dee-debugger-<version>.vsix` or drag onto the Extensions view).
+  cm-dee-debugger-<version>.vsix` or drag onto the Extensions view).
 - **The Microsoft C# extension** (`ms-dotnettools.csharp`) — it provides the .NET
   debugger. It's a declared dependency, so it installs automatically when VS Code has
   Marketplace access; on offline machines install it first. C# Dev Kit also works.
@@ -151,7 +151,7 @@ Connection** first, then [Troubleshooting](../user-guide/troubleshooting.md).
 *Setup: instructor machine with the extension NOT yet installed; stack running; MES UI
 logged in, in a browser.*
 
-1. **Install live** (5 min). `code --install-extension dee-debugger-<version>.vsix` in a
+1. **Install live** (5 min). `code --install-extension cm-dee-debugger-<version>.vsix` in a
    terminal. Open the customization project folder, accept Workspace Trust — *pause
    here:* "If you click Don't Trust, the extension refuses to run. That's not a bug —
    Module 3 shows what an environment profile can execute, and you'll agree with the

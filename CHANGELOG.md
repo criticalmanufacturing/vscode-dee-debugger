@@ -1,18 +1,21 @@
 # Changelog
 
-## Unreleased
-
-### Changed
-- **The extension icon is now the Critical Manufacturing logo**, the same one the other
-  Critical Manufacturing extensions use. The Marketplace banner and the documentation site
-  use it too.
-
 ## 0.3.0 — 2026-11-06
 
 DEE files in subfolders, in several Data packages, and in the cmf-cli `DeeDevBase` format
 ([ADR 0012](docs/adr/0012-dee-files-in-subfolders.md)). First release on the
-[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.dee-debugger),
+[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.cm-dee-debugger),
 as a pre-release.
+
+### Upgrading
+- **The extension ID is now `CriticalManufacturing.cm-dee-debugger`** (was
+  `CriticalManufacturing.dee-debugger`). VS Code treats it as a new extension: uninstall the old
+  one first (`code --uninstall-extension criticalmanufacturing.dee-debugger`). Environments
+  are kept; stored tokens are not, so run **Set Credentials** again. The VSIX is now
+  `cm-dee-debugger-<version>.vsix`.
+- **The extension icon is now the Critical Manufacturing logo**, the same one the other
+  Critical Manufacturing extensions use. The Marketplace banner and the documentation site
+  use it too.
 
 ### Fixed
 - **Opening an action could overwrite your local file.** Open always wrote the MES version to

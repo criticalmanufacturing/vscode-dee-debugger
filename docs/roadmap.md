@@ -34,9 +34,10 @@ scratchpad, host-rewrite watcher (F3.5), debug-mode cleanup on window close (F4.
 LICENSE (then a placeholder; `LICENSE.md` is now BSD-3-Clause), CHANGELOG, no-telemetry policy, headless
 VS Code e2e suite in CI, tag-triggered release pipeline (GitHub Release + opt-in
 marketplace publish via Trusted Publishing, GitHub OIDC).
-Repository home: GitHub, `criticalmanufacturing/vscode-dee-debugger`. Marketplace: 0.3.0
-published 2026-11-09 as a pre-release under the `CriticalManufacturing` publisher (first
-version uploaded manually; later versions publish from CI).
+Repository home: GitHub, `criticalmanufacturing/vscode-dee-debugger`. Marketplace:
+`CriticalManufacturing.cm-dee-debugger`, a pre-release from 0.3.0 (first version uploaded
+manually; later versions publish from CI). 0.3.0 was first uploaded on 2026-11-09 as
+`dee-debugger`, then renamed.
 Open decisions (non-engineering): legal review of LICENSE.
 
 ## M6 — Browser sign-in (auth UX) — deferred

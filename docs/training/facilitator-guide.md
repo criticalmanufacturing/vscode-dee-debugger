@@ -28,7 +28,7 @@ flowchart TD
 ### 1.1 Per-learner machine
 
 - [ ] VS Code ≥ 1.145 installed; learner can open a terminal and run `docker ps`.
-- [ ] The extension VSIX (`dee-debugger-<version>.vsix`) copied locally — do **not**
+- [ ] The extension VSIX (`cm-dee-debugger-<version>.vsix`) copied locally — do **not**
       rely on classroom internet at 9:00. Do **not** pre-install it: Module 2
       installs it live.
 - [ ] Microsoft C# extension: either Marketplace access verified (it auto-installs
