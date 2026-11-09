@@ -33,9 +33,11 @@ manage/rename/remove with credential hygiene), search/filter, version history, e
 scratchpad, host-rewrite watcher (F3.5), debug-mode cleanup on window close (F4.5), icon,
 LICENSE (then a placeholder; `LICENSE.md` is now BSD-3-Clause), CHANGELOG, no-telemetry policy, headless
 VS Code e2e suite in CI, tag-triggered release pipeline (GitHub Release + opt-in
-marketplace publish via VSCE_PAT secret).
-Open decisions (non-engineering): repository home (convert CI if Azure DevOps),
-marketplace publisher account sign-off, legal review of LICENSE.
+marketplace publish via Trusted Publishing, GitHub OIDC).
+Repository home: GitHub, `criticalmanufacturing/vscode-dee-debugger`. Marketplace: 0.3.0
+published 2026-11-09 as a pre-release under the `CriticalManufacturing` publisher (first
+version uploaded manually; later versions publish from CI).
+Open decisions (non-engineering): legal review of LICENSE.
 
 ## M6 — Browser sign-in (auth UX) — deferred
 Browser-based OIDC sign-in (auth-code + PKCE loopback, tenant-scoped discovery, refresh-token

@@ -19,12 +19,12 @@ flowchart LR
 
 ## What you need
 
-- **VS Code 1.90 or newer.**
-- **The extension VSIX** (`dee-debugger-<version>.vsix`), from your team's usual
-  distribution channel or CI builds.
+- **VS Code 1.145 or newer.**
+- **The extension**, from the VS Code Marketplace. On a machine without Marketplace
+  access, use the VSIX (`dee-debugger-<version>.vsix`) from GitHub Releases.
 - **The Microsoft C# extension** (`ms-dotnettools.csharp`). It provides the .NET
   debugger the extension uses. It is declared as a dependency, so VS Code installs it
-  automatically with the VSIX when it has Marketplace access; on an offline machine,
+  automatically when it has Marketplace access; on an offline machine,
   install it first. C# Dev Kit also works — it includes the C# extension.
 - **A running MES development or test instance** you are allowed to change — for
   example a local stack started with `cmf dev local stack up` in your customization
@@ -40,27 +40,37 @@ flowchart LR
 
 ## Step 1 — Install the extension
 
-Get the `.vsix` from the project's GitHub Releases page (or a CI build artifact). Then either
-drag it onto the Extensions view, or from a terminal:
+In the Extensions view, search for **DEE Debugger**, open **DEE Debugger for Critical
+Manufacturing MES** by Critical Manufacturing, and select **Install**. Or, from a terminal:
+
+```bash
+code --install-extension CriticalManufacturing.dee-debugger --pre-release
+```
+
+While the version is 0.x the extension is published as a **pre-release**, and VS Code keeps it
+updated from the Marketplace.
+
+Without Marketplace access, get the `.vsix` from the project's GitHub Releases page and either
+drag it onto the Extensions view, or run:
 
 ```bash
 code --install-extension dee-debugger-<version>.vsix
 ```
 
-Then run **Developer: Reload Window** (the extension host only picks up a new build after a
-reload). A new **DEE Debugger** icon appears on the Activity Bar.
+A new **DEE Debugger** icon appears on the Activity Bar. If it doesn't, run
+**Developer: Reload Window**.
 
-!!! note "Upgrading or replacing a pilot build"
-    `--install-extension` replaces an older version in place. If an **internal pilot build with
-    a higher version number** is installed (early testers had a `0.3.0` pilot), VS Code may
-    treat the release as a downgrade — add `--force`, or uninstall first:
+!!! note "Replacing a VSIX or pilot build"
+    If you installed a VSIX before, including an **internal pilot build** (early testers had a
+    `0.3.0` pilot), uninstall it first. A Marketplace release with the same or a lower version
+    number is not installed over it:
 
     ```bash
     code --uninstall-extension criticalmanufacturing.dee-debugger
-    code --install-extension dee-debugger-<version>.vsix
+    code --install-extension CriticalManufacturing.dee-debugger --pre-release
     ```
 
-    Environments and stored tokens survive both paths (they are keyed by the extension id).
+    Environments and stored tokens survive (they are keyed by the extension id).
     Working inside **WSL or a Remote-SSH / devcontainer window**: run the command in that
     remote's terminal so the extension lands on the remote side, where `docker` is.
 
