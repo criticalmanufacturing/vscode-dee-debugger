@@ -1,0 +1,1278 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Browse, edit, sync and debug Critical Manufacturing MES DEE Actions from VS Code.">
+      
+      
+      
+      
+        <link rel="prev" href="../troubleshooting/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>FAQ - DEE Debugger for VS Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faq" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DEE Debugger for VS Code" class="md-header__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEE Debugger for VS Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DEE Debugger for VS Code" class="md-nav__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    DEE Debugger for VS Code
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-first-dee-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial — your first DEE debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editing-and-uploading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing &amp; uploading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dee-vs-business-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DEE vs business debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-debugging-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How debugging works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-i-enable-debug-mode-does-it-affect-my-colleagues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If I enable debug mode, does it affect my colleagues?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-does-my-breakpoint-never-hit-even-though-the-action-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why does my breakpoint never hit, even though the action runs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-upload-before-debugging-my-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do I need to upload before debugging my changes?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-this-against-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use this against production?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tree-and-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tree and filtering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The tree and filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-dont-i-see-all-actions-in-the-tree-or-in-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why don't I see all actions in the tree (or in Sync)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-created-a-dee-does-it-run-before-i-make-it-effective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I created a DEE — does it run before I make it effective?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-does-the-same-action-appear-more-than-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why does the same action appear more than once?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versions-and-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions and collaboration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versions and collaboration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-difference-between-save-to-mes-and-save-as-new-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's the difference between "Save to MES" and "Save as New Version"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-of-us-edited-the-same-action-what-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two of us edited the same action — what happens?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-several-people-debug-on-the-same-dev-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can several people debug on the same dev instance?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practicalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practicalities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practicalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-do-the-cs-files-go-do-i-have-to-commit-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where do the .cs files go? Do I have to commit them?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-tool-slow-with-big-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is the tool slow with big environments?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-are-my-tokens-stored-is-anything-sent-anywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where are my tokens stored? Is anything sent anywhere?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-it-work-on-windows-macos-linux-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it work on Windows / macOS / Linux / WSL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-i-enable-debug-mode-does-it-affect-my-colleagues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If I enable debug mode, does it affect my colleagues?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-does-my-breakpoint-never-hit-even-though-the-action-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why does my breakpoint never hit, even though the action runs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-upload-before-debugging-my-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do I need to upload before debugging my changes?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-this-against-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use this against production?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tree-and-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tree and filtering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The tree and filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-dont-i-see-all-actions-in-the-tree-or-in-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why don't I see all actions in the tree (or in Sync)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-created-a-dee-does-it-run-before-i-make-it-effective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I created a DEE — does it run before I make it effective?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-does-the-same-action-appear-more-than-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why does the same action appear more than once?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versions-and-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions and collaboration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versions and collaboration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-difference-between-save-to-mes-and-save-as-new-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's the difference between "Save to MES" and "Save as New Version"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-of-us-edited-the-same-action-what-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two of us edited the same action — what happens?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-several-people-debug-on-the-same-dev-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can several people debug on the same dev instance?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practicalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practicalities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practicalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-do-the-cs-files-go-do-i-have-to-commit-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where do the .cs files go? Do I have to commit them?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-tool-slow-with-big-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is the tool slow with big environments?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-are-my-tokens-stored-is-anything-sent-anywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where are my tokens stored? Is anything sent anywhere?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-it-work-on-windows-macos-linux-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it work on Windows / macOS / Linux / WSL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">¶</a></h1>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">¶</a></h2>
+<h3 id="if-i-enable-debug-mode-does-it-affect-my-colleagues">If I enable debug mode, does it affect my colleagues?<a class="headerlink" href="#if-i-enable-debug-mode-does-it-affect-my-colleagues" title="Permanent link">¶</a></h3>
+<p>No. DEE debug mode is <strong>per user</strong>: the MES host runs <em>your</em> local file's code only
+for operations executed under <em>your</em> user account. Everyone else keeps executing the
+stored database version, at full speed, with no idea you're debugging. The database
+version doesn't change until you explicitly run <strong>Save Action to MES</strong>.</p>
+<p>Two caveats on shared instances:</p>
+<ul>
+<li>While you're <strong>paused at a breakpoint</strong>, the whole host process is suspended — the
+  MES freezes for everyone until you continue. Pause briefly.</li>
+<li><strong>Save Action to MES</strong> (as opposed to just saving the file) publishes for everyone —
+  know <a href="../editing-and-uploading/#the-three-ways-to-save">which save you're doing</a>.</li>
+</ul>
+<h3 id="why-does-my-breakpoint-never-hit-even-though-the-action-runs">Why does my breakpoint never hit, even though the action runs?<a class="headerlink" href="#why-does-my-breakpoint-never-hit-even-though-the-action-runs" title="Permanent link">¶</a></h3>
+<p>Because debug mode is per-user, the execution must happen <strong>as the user your token
+belongs to</strong>. The classic miss: your token is for user A (say, the account whose PAT
+you generated), but you trigger the operation in the MES UI logged in as user B — B's
+execution runs the stored version, and your breakpoint stays cold. Trigger the
+operation logged in as the token's user, or use <strong>Execute Action…</strong> in VS Code (which
+always runs as your token's user).</p>
+<p>Other causes, in order of likelihood: the action simply hasn't executed yet since you
+enabled debug mode (breakpoints show hollow and bind on first execution); a load
+balancer routed the execution to a different host instance; the host restarted and
+forgot the registration. Details in
+<a href="../troubleshooting/#debugging-problems">Troubleshooting</a>.</p>
+<h3 id="do-i-need-to-upload-before-debugging-my-changes">Do I need to upload before debugging my changes?<a class="headerlink" href="#do-i-need-to-upload-before-debugging-my-changes" title="Permanent link">¶</a></h3>
+<p>No — that's the point. With debug mode on, saving the file (<code>Ctrl+S</code>) is enough: the
+host compiles your file on the next execution. <strong>Save Action to MES</strong> is only for
+publishing the finished change to everyone.</p>
+<h3 id="can-i-use-this-against-production">Can I use this against production?<a class="headerlink" href="#can-i-use-this-against-production" title="Permanent link">¶</a></h3>
+<p><strong>Never.</strong> Debug mode and debugger attach are development/test tools:</p>
+<ul>
+<li>A breakpoint pause <strong>stops the entire MES</strong> for all users.</li>
+<li>Attaching a debugger to the host process is highly privileged.</li>
+<li>Debug mode changes which code executes for your user — on production data.</li>
+</ul>
+<p>The extension warns before attaching to non-local addresses, but the real safeguard is
+you: keep production environments out of your environment list entirely.</p>
+<h2 id="the-tree-and-filtering">The tree and filtering<a class="headerlink" href="#the-tree-and-filtering" title="Permanent link">¶</a></h2>
+<h3 id="why-dont-i-see-all-actions-in-the-tree-or-in-sync">Why don't I see all actions in the tree (or in Sync)?<a class="headerlink" href="#why-dont-i-see-all-actions-in-the-tree-or-in-sync" title="Permanent link">¶</a></h3>
+<p>The DEE Explorer shows <strong>every action the MES reports</strong>, one row per action — the same
+list as Administration → DEE Actions. Two things can still make a row disappear:</p>
+<ul>
+<li><strong>Disabled actions</strong> are hidden by default. When any are hidden the tree shows a
+  <em>"N disabled actions hidden — click to show"</em> row; click it (or run <strong>Toggle Show
+  Disabled Actions</strong>, or set <strong>deeDebugger.showDisabledActions</strong>) to reveal them.</li>
+<li>A <strong>text filter</strong> is active: a filled filter icon in the DEE Explorer's title means one
+  is — click it and clear the text to restore the full tree.</li>
+</ul>
+<p>Actions whose current version is <strong>not yet effective</strong> (a draft) are <em>not</em> hidden — they
+carry a <code>not effective (Active)</code> badge. Sync always covers every action the MES
+reports, including disabled actions and drafts.</p>
+<h3 id="i-created-a-dee-does-it-run-before-i-make-it-effective">I created a DEE — does it run before I make it effective?<a class="headerlink" href="#i-created-a-dee-does-it-run-before-i-make-it-effective" title="Permanent link">¶</a></h3>
+<p>Yes. A newly created action is stored as <strong>version 1 in state Active, not effective</strong>,
+and the MES runs the effective version or, when none is effective, the <strong>highest</strong>
+version — so v1 runs. The <code>not effective</code> badge still matters: until a version is
+effective, a version staged later (<strong>Save as New Version…</strong>) takes over immediately.
+Right-click → <strong>Make Version Effective</strong> (or the ✓ inline icon) fixes the version that
+runs. <strong>New DEE Action…</strong> asks this up front, and a Sync upload that creates actions offers
+it at the end of the batch.</p>
+<p>If a new action doesn't run at all, check that it is <strong>enabled</strong> and belongs to an
+<strong>action group</strong> — membership is configured in the MES UI.</p>
+<h3 id="why-does-the-same-action-appear-more-than-once">Why does the same action appear more than once?<a class="headerlink" href="#why-does-the-same-action-appear-more-than-once" title="Permanent link">¶</a></h3>
+<p>An action can belong to several action groups; it appears under each of them. It's the
+same action — editing or toggling debug from any of its entries affects all of them.</p>
+<h2 id="versions-and-collaboration">Versions and collaboration<a class="headerlink" href="#versions-and-collaboration" title="Permanent link">¶</a></h2>
+<h3 id="whats-the-difference-between-save-to-mes-and-save-as-new-version">What's the difference between "Save to MES" and "Save as New Version"?<a class="headerlink" href="#whats-the-difference-between-save-to-mes-and-save-as-new-version" title="Permanent link">¶</a></h3>
+<p><strong>Save Action to MES (Compile &amp; Save)</strong> overwrites, in place, the version you are working
+on — the one you opened (effective, or the draft when none is effective), or the version
+you last created with <strong>Save as New Version…</strong>. When that version is a draft you are
+offered <strong>Make Effective</strong>; the message says whether the MES runs that draft (it does
+when no other version is effective). <strong>Reload Action from
+MES</strong> returns you to the version shown in the tree.
+<strong>Save Action to MES as New Version…</strong> creates a new version and lets you choose
+whether it becomes effective immediately — the previous version stays in the history
+as a rollback point. Use new versions for significant changes on shared environments.
+<strong>Show Version History…</strong> lists every version (effective one marked) and can diff any
+of them against your local file. See
+<a href="../editing-and-uploading/#the-three-ways-to-save">versioning semantics</a>.</p>
+<h3 id="two-of-us-edited-the-same-action-what-happens">Two of us edited the same action — what happens?<a class="headerlink" href="#two-of-us-edited-the-same-action-what-happens" title="Permanent link">¶</a></h3>
+<p>Whoever uploads second gets a conflict dialog: the action changed on the MES since
+they loaded it, with the choice to <strong>Overwrite</strong> or cancel and reconcile first. Bulk
+sync uploads similarly refuse entries that changed server-side since your last
+compare. Nothing is silently lost — but agree with your team on who owns an action, or
+use new versions. Details:
+<a href="../editing-and-uploading/#concurrency-conflicts-someone-else-changed-it">concurrency conflicts</a>.</p>
+<h3 id="can-several-people-debug-on-the-same-dev-instance">Can several people debug on the same dev instance?<a class="headerlink" href="#can-several-people-debug-on-the-same-dev-instance" title="Permanent link">¶</a></h3>
+<p>Yes — debug registrations are per (user, action), so two developers can debug
+different (or even the same) actions with their own files, each seeing only their own
+code changes. The shared limits: only one debugger can be attached to the host process
+at a time, and anyone's breakpoint pause freezes the instance for all.</p>
+<h2 id="practicalities">Practicalities<a class="headerlink" href="#practicalities" title="Permanent link">¶</a></h2>
+<h3 id="where-do-the-cs-files-go-do-i-have-to-commit-them">Where do the .cs files go? Do I have to commit them?<a class="headerlink" href="#where-do-the-cs-files-go-do-i-have-to-commit-them" title="Permanent link">¶</a></h3>
+<p>Into your workspace's DEEs folder — auto-detected (every folder containing
+<code>DeeDevBase.cs</code>, or every folder named <code>DEEs</code> that contains a <code>.csproj</code>), configurable via
+<strong>deeDebugger.deesFolder</strong> (one folder or a list), falling back to a <code>.dees/</code> folder. Existing
+files are used where they are, subfolders included; only new actions are downloaded, into the
+first folder. <code>DeeDevBase</code>-format files get a working copy under <code>.dee-debug/</code>, which is never
+committed (see <a href="../editing-and-uploading/#deedevbase-files-working-copies">working copies</a>). Committing them is optional but recommended: with the
+standard Actions project you get IntelliSense, reviewable diffs, and the
+<a href="../sync/#a-typical-git-workflow">sync workflow</a>.</p>
+<h3 id="is-the-tool-slow-with-big-environments">Is the tool slow with big environments?<a class="headerlink" href="#is-the-tool-slow-with-big-environments" title="Permanent link">¶</a></h3>
+<p>Loading the tree takes two requests (all groups and all actions), sent in parallel.
+Environments with thousands of actions take a few seconds to refresh but stay
+responsive (loading is in the background). Use <strong>Filter Actions…</strong> rather than scrolling; opening, uploading,
+and debugging single actions is unaffected by environment size. If a refresh feels
+stuck while a debug session is active, remember a
+<a href="../troubleshooting/#debugging-problems">paused host</a> answers nothing.</p>
+<h3 id="where-are-my-tokens-stored-is-anything-sent-anywhere">Where are my tokens stored? Is anything sent anywhere?<a class="headerlink" href="#where-are-my-tokens-stored-is-anything-sent-anywhere" title="Permanent link">¶</a></h3>
+<p>Tokens live in your operating system's secure credential store (via VS Code's secret
+storage), scoped per environment — never in settings files or your repo. This covers both
+credential kinds: a browser-copied access token and a Personal Access Token. The extension
+collects <strong>no telemetry</strong> and talks only to the MES hosts you configure.
+Logs and the <a href="../troubleshooting/#when-youre-stuck-collect-support-bundle">support bundle</a>
+automatically redact credentials.</p>
+<h3 id="does-it-work-on-windows-macos-linux-wsl">Does it work on Windows / macOS / Linux / WSL?<a class="headerlink" href="#does-it-work-on-windows-macos-linux-wsl" title="Permanent link">¶</a></h3>
+<p>Yes — anywhere VS Code and (for containerized hosts) the <code>docker</code> CLI work. The one
+platform note concerns installing the debugger (<code>vsdbg</code>) into the host. When the host
+container has no <code>curl</code> or <code>wget</code> — true of MES 11.x host images; MES 12 images have
+<code>curl</code> — the extension downloads <code>vsdbg</code> locally and streams it in, which needs local
+<code>bash</code> and <code>tar</code>. That path isn't available on plain Windows without WSL. One current limitation: in a multi-root workspace, only the first
+folder is searched for the DEEs project.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

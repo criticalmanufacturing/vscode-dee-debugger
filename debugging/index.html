@@ -1,0 +1,1575 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Browse, edit, sync and debug Critical Manufacturing MES DEE Actions from VS Code.">
+      
+      
+      
+      
+        <link rel="prev" href="../editing-and-uploading/">
+      
+      
+        <link rel="next" href="../dee-vs-business-debugging/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Debugging - DEE Debugger for VS Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#debugging-dee-actions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DEE Debugger for VS Code" class="md-header__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEE Debugger for VS Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Debugging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DEE Debugger for VS Code" class="md-nav__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    DEE Debugger for VS Code
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-first-dee-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial — your first DEE debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editing-and-uploading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing &amp; uploading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-your-first-debug-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before your first debug session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-debug-loop-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The debug loop, step by step
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The debug loop, step by step">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-toggle-debug-mode-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Toggle debug mode on
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-attach-the-debugger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Attach the debugger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-set-a-breakpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Set a breakpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-trigger-the-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Trigger the action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Iterate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-finish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Finish
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-session-controls-continue-disconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug session controls (Continue, Disconnect, …)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while-you-are-paused-everything-freezes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        While you are paused, everything freezes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-when-the-host-restarts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens when the host restarts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-mes-hosts-the-pdb-prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux MES hosts: the PDB prerequisite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balanced-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load-balanced environments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attaching-for-custom-business-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attaching for custom business debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attaching for custom business debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-business-breakpoints-find-your-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How business breakpoints find your source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-it-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running it, step by step
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-three-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-all-works-under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it all works under the hood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dee-vs-business-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DEE vs business debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-debugging-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How debugging works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-your-first-debug-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before your first debug session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-debug-loop-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The debug loop, step by step
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The debug loop, step by step">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-toggle-debug-mode-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Toggle debug mode on
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-attach-the-debugger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Attach the debugger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-set-a-breakpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Set a breakpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-trigger-the-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Trigger the action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Iterate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-finish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Finish
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-session-controls-continue-disconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug session controls (Continue, Disconnect, …)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while-you-are-paused-everything-freezes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        While you are paused, everything freezes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-when-the-host-restarts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens when the host restarts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-mes-hosts-the-pdb-prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux MES hosts: the PDB prerequisite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balanced-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load-balanced environments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attaching-for-custom-business-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attaching for custom business debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attaching for custom business debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-business-breakpoints-find-your-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How business breakpoints find your source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-it-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running it, step by step
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-three-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-all-works-under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it all works under the hood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="debugging-dee-actions">Debugging DEE actions<a class="headerlink" href="#debugging-dee-actions" title="Permanent link">¶</a></h1>
+<blockquote>
+<p><strong>Warning:</strong> DEE debug mode and debugger attach are for <strong>development and test
+environments only</strong>. Attaching a debugger to a host is highly privileged, and a
+paused host stops the entire MES for everyone using it. The extension warns you
+before attaching to a non-local address; treat that warning seriously.</p>
+</blockquote>
+<h2 id="the-mental-model">The mental model<a class="headerlink" href="#the-mental-model" title="Permanent link">¶</a></h2>
+<p>Understand this first — everything else about debugging follows from it.</p>
+<p>When you enable <strong>DEE debug mode</strong> for an action, the MES host stops using the code
+stored in its database <em>for you</em>. Instead, every time <em>you</em> trigger the action, it
+compiles your <strong>local file</strong> (the extension delivers it into the host container) with
+debug symbols. Five consequences:</p>
+<ol>
+<li><strong>It's per-user.</strong> The debug registration is keyed to the user your token belongs
+   to. Only operations executed <strong>as that user</strong> run your file's code and can hit your
+   breakpoints. Everyone else — colleagues, integrations, other accounts — keeps
+   executing the normal database version, completely unaffected. This also means: if
+   you trigger the action from the MES UI logged in as a different account, your
+   breakpoint will never hit. See the
+   <a href="../faq/#why-does-my-breakpoint-never-hit-even-though-the-action-runs">FAQ</a>.</li>
+<li><strong>It's in-memory.</strong> The registration lives in the host process's memory. A host
+   restart (container restart, stack recreate, redeploy) silently forgets it. The
+   extension notices on the next DEE Explorer refresh and asks whether to
+   re-enable — see <a href="#what-happens-when-the-host-restarts">host restarts</a>.</li>
+<li><strong>Hot reload, no save-to-MES needed.</strong> While debug mode is on, every time you save
+   the file (<code>Ctrl+S</code>), the extension pushes it to the host, and your <strong>next</strong>
+   execution compiles and runs the new code. You iterate — edit, save, trigger,
+   inspect — without ever running <strong>Save Action to MES</strong>. The database version doesn't
+   change until you explicitly save to MES.</li>
+<li><strong>The database is untouched until you say so.</strong> Turning debug mode off returns you
+   to the stored version instantly. If you like your changes, publish them with
+   <strong>Save Action to MES (Compile &amp; Save)</strong> — that's the moment they become real for
+   all users.</li>
+<li><strong>A paused host is a stopped MES.</strong> .NET debugging suspends the <strong>entire host
+   process</strong> while stopped at a breakpoint. See
+   <a href="#while-you-are-paused-everything-freezes">everything freezes</a>.</li>
+</ol>
+<h2 id="before-your-first-debug-session">Before your first debug session<a class="headerlink" href="#before-your-first-debug-session" title="Permanent link">¶</a></h2>
+<ul>
+<li>The Microsoft <strong>C# extension</strong> must be installed (it comes automatically with this
+  extension).</li>
+<li>Your environment must be able to reach the host container — if <strong>Enable DEE Debug
+  Mode</strong> or <strong>Attach</strong> fail with container errors, fix the
+  <a href="../environments/#which-connection-type-am-i-decision-tree">environment</a> first.</li>
+<li><strong>Linux MES hosts up to 11.x need a one-time host-side fix.</strong> You don't have to
+  remember it: the extension checks the host when you enable debug mode or attach and
+  offers to apply the fix. MES 12 images already contain it. Background in
+  <a href="#linux-mes-hosts-the-pdb-prerequisite">the Linux host prerequisite</a>.</li>
+</ul>
+<h2 id="the-debug-loop-step-by-step">The debug loop, step by step<a class="headerlink" href="#the-debug-loop-step-by-step" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/debugging_mermaid_0_8d4af6a6.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/debugging_mermaid_0_8d4af6a6.svg"></a></p>
+<h3 id="1-toggle-debug-mode-on">1. Toggle debug mode on<a class="headerlink" href="#1-toggle-debug-mode-on" title="Permanent link">¶</a></h3>
+<p>Right-click the action in the <strong>DEE Explorer</strong> → <strong>Enable DEE Debug Mode</strong> (or the bug
+icon on the row; the same entry reads <strong>Disable DEE Debug Mode</strong> while it is on — the
+Command Palette offers the state-agnostic <strong>Toggle DEE Debug Mode</strong>). The extension copies
+your local file into the host container, registers debug mode with the MES, and opens the
+file. The action gets a <strong>DEBUG</strong> badge and a bug icon, the status bar shows how many
+actions are in debug mode, and a dialog asks <strong>Attach the debugger now?</strong> (<strong>Attach
+Debugger</strong> / <strong>Not Now</strong>) — its detail text states the semantics (per-user, in-memory, hot
+reload). Set <code>deeDebugger.attachAfterEnablingDebug</code> to <code>always</code> or <code>never</code> to skip the
+question; it is never asked while the debugger is already attached.</p>
+<p>(If the action has no local file yet, the extension downloads it first. For a <code>DeeDevBase</code>
+file, the <a href="../editing-and-uploading/#deedevbase-files-working-copies">working copy</a> is what gets
+debugged. On a
+containerized host the extension also checks the Linux PDB prerequisite at this point —
+see <a href="#linux-mes-hosts-the-pdb-prerequisite">below</a>.)</p>
+<h3 id="2-attach-the-debugger">2. Attach the debugger<a class="headerlink" href="#2-attach-the-debugger" title="Permanent link">¶</a></h3>
+<p>Choose <strong>Attach Debugger</strong> in that dialog, or run <strong>DEE Debugger: Attach Debugger to MES
+Host</strong> (also the debug icon in the DEE Explorer's title bar) any time.</p>
+<ul>
+<li><strong>First time on a fresh container:</strong> the .NET debugger (<code>vsdbg</code>) isn't in the MES
+  host image. The extension detects this and offers to install it (<strong>Install vsdbg</strong>) —
+  say yes. On MES 12 hosts the image has <code>curl</code>, so it downloads inside the container
+  (the container needs internet access). MES 11.x images have no download tool, so the
+  extension downloads <code>vsdbg</code> on your machine and streams it into the container — that
+  needs internet access plus <code>bash</code> and <code>tar</code> locally (on Windows, run VS Code in WSL).</li>
+<li>The extension finds the MES host process automatically. If it ever shows a process
+  picker instead, choose the <code>dotnet</code> process running
+  <code>Cmf.Foundation.Services.HostService.dll</code> — <strong>not</strong> the <code>CmfEntrypoint</code> wrapper
+  (PID 1), which can't be attached to.</li>
+</ul>
+<p>You're attached when VS Code's debug toolbar appears and the extension shows
+<em>"Attached to the MES host. …"</em>.</p>
+<blockquote>
+<p><strong>Kubernetes / OpenShift environments</strong> need two things in the host pod spec, because
+there is no privileged-exec workaround on clusters:</p>
+<ul>
+<li><code>securityContext.capabilities.add: ["SYS_PTRACE"]</code> on the host container;</li>
+<li>since the host image runs as a non-root user (and added capabilities are dropped for
+  non-root users), either <code>runAsUser: 0</code> on that container or
+  <code>kernel.yama.ptrace_scope=0</code> on the node.</li>
+</ul>
+<p>The extension checks this before attaching and tells you exactly what is missing. See
+the <a href="../environments/#kubernetes-kubectl-and-openshift-oc">per-type setup notes</a>.</p>
+</blockquote>
+<h3 id="3-set-a-breakpoint">3. Set a breakpoint<a class="headerlink" href="#3-set-a-breakpoint" title="Permanent link">¶</a></h3>
+<p>Click in the gutter next to a line <strong>inside the action-code markers</strong> of your file.</p>
+<blockquote>
+<p><strong>Note:</strong> The breakpoint may show as a hollow circle (unbound) at first. That's
+normal — the debug-compiled assembly only loads when the action first executes.
+It fills in solid at that moment and hits.</p>
+</blockquote>
+<h3 id="4-trigger-the-action">4. Trigger the action<a class="headerlink" href="#4-trigger-the-action" title="Permanent link">¶</a></h3>
+<p>Make the MES execute the action <strong>as your user</strong>:</p>
+<ul>
+<li>Perform the hooked operation in the MES UI, <strong>logged in as the same account your
+  token belongs to</strong> — e.g. create a Material to hit a
+  <code>…CreateMaterial.Pre</code> action; or</li>
+<li>Right-click the action → <strong>Execute Action…</strong> for a direct run with a JSON input of
+  your choosing (this always runs as your token's user). The execute call waits while
+  you sit at the breakpoint; after 60 seconds the extension gives up on it and reports
+  that it could not reach the MES host — with a hint that the host is probably paused.</li>
+</ul>
+<p>The breakpoint hits: you can inspect <code>Input</code> and other locals, step, and continue.</p>
+<h3 id="5-iterate">5. Iterate<a class="headerlink" href="#5-iterate" title="Permanent link">¶</a></h3>
+<p>Change the code inside the markers, save — the status bar flashes
+<strong>DEE: pushed … to host</strong> — and trigger again. The new code runs. No upload, no
+recompile step on your side.</p>
+<h3 id="6-finish">6. Finish<a class="headerlink" href="#6-finish" title="Permanent link">¶</a></h3>
+<ul>
+<li>Happy with the change? <strong>Save Action to MES (Compile &amp; Save)</strong> to publish it for
+  everyone. See <a href="../editing-and-uploading/#the-three-ways-to-save">the save semantics</a>.</li>
+<li>Right-click → <strong>Disable DEE Debug Mode</strong> to turn debug off — the stored version takes
+  over again for you. If you close the VS Code window with debug mode still on, the
+  extension cleans up your registrations on the way out (best effort).</li>
+<li>Disconnect the debugger with the debug toolbar's disconnect button (see below).</li>
+</ul>
+<h2 id="debug-session-controls-continue-disconnect">Debug session controls (Continue, Disconnect, …)<a class="headerlink" href="#debug-session-controls-continue-disconnect" title="Permanent link">¶</a></h2>
+<p>Once attached, VS Code shows the <strong>debug toolbar</strong>. Because this is an <strong>attach</strong> session (you
+attached to the already-running MES host — you didn't launch it), the controls behave a little
+differently from launching an app. What each does:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Shortcut</th>
+<th>What it does here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Continue</strong></td>
+<td><code>F5</code></td>
+<td>Resumes the host and <strong>keeps the debugger attached</strong>. Use this after a breakpoint — it un-freezes the MES so it (and your next trigger) can run.</td>
+</tr>
+<tr>
+<td><strong>Pause</strong></td>
+<td>—</td>
+<td>Manually suspends the host. Avoid on shared stacks — it freezes the whole MES.</td>
+</tr>
+<tr>
+<td><strong>Step Over / Into / Out</strong></td>
+<td><code>F10</code> / <code>F11</code> / <code>Shift+F11</code></td>
+<td>Normal stepping while paused. <strong>Step Into</strong> can enter product <code>Cmf.*</code> code you have no source for ("no source available") — use <strong>Step Over</strong> to stay in your code.</td>
+</tr>
+<tr>
+<td><strong>Disconnect</strong> (the red "stop" icon)</td>
+<td><code>Shift+F5</code></td>
+<td><strong>Ends the debug session by DETACHING</strong> — vsdbg lets go and the host keeps running. This is how you finish debugging. It does <strong>not</strong> stop or kill the MES host.</td>
+</tr>
+<tr>
+<td><strong>Restart</strong></td>
+<td><code>Ctrl+Shift+F5</code></td>
+<td>Detaches and re-attaches. Rarely needed; if the host was restarted, just re-run <strong>Attach</strong> instead.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Always Disconnect (Shift+F5) when you're done — and don't leave the host paused</p>
+<p>A debug session that ends <em>uncleanly</em> (you close the VS Code window or the WSL/remote
+connection drops while still attached, especially while <strong>paused</strong>) can leave the debugger
+attached with the host's request threads suspended. The host then answers <code>/</code> but <strong>every
+<code>/api</code> call hangs</strong> — the extension looks broken with "could not reach the MES host" timeouts.
+Killing the debugger process does <strong>not</strong> recover it; only <strong>restarting the host container</strong>
+does. So: <strong>Continue (<code>F5</code>) off any breakpoint</strong> before you step away, and <strong>Disconnect
+(<code>Shift+F5</code>)</strong> when finished rather than just closing the window.</p>
+<p>The extension detaches its own attach sessions automatically when it shuts down normally, so a
+routine window close is safe — but a crash or dropped remote connection can still orphan the
+debugger. If you hit the "host answers but <code>/api</code> hangs" symptom, restart the MES host.</p>
+</div>
+<p><strong>Disconnect vs. Disable DEE Debug Mode</strong> — two independent things:</p>
+<ul>
+<li><strong>Disconnect</strong> ends the <em>debugger</em> (vsdbg) session. Your DEE Debug Mode registration is
+  untouched — the host still compiles your local file on the next trigger (the status bar
+  keeps showing the <code>🐞</code> count as a reminder).</li>
+<li><strong>Disable DEE Debug Mode</strong> ends the <em>host-side registration</em> — the stored database version
+  runs again. It does not detach the debugger.</li>
+</ul>
+<p>Finishing a debug session cleanly usually means both: <strong>Disable DEE Debug Mode</strong>, then
+<strong>Disconnect</strong>.</p>
+<h2 id="while-you-are-paused-everything-freezes">While you are paused, everything freezes<a class="headerlink" href="#while-you-are-paused-everything-freezes" title="Permanent link">¶</a></h2>
+<p>While the debugger has the host stopped — at a breakpoint, stepped, paused, or on an
+exception — the <strong>entire MES host process is suspended</strong>. The MES UI stops responding,
+API calls time out, colleagues on the same instance are blocked, and even this
+extension's own tree refreshes fail. This is normal .NET debugging behavior, not an
+outage.</p>
+<blockquote>
+<p><strong>Note:</strong> If you see "could not reach the MES host" errors while a debug session is
+active, the extension reminds you the host is probably paused. Press <strong>Continue</strong>
+(<code>F5</code>) and retry. And on a shared dev instance, be a good neighbor: don't stay
+paused for long.</p>
+</blockquote>
+<h2 id="what-happens-when-the-host-restarts">What happens when the host restarts<a class="headerlink" href="#what-happens-when-the-host-restarts" title="Permanent link">¶</a></h2>
+<p>Because debug registrations are in-memory, a host restart (someone recreated the
+stack, the container crashed, an install ran) drops them — while your local file, your
+DEBUG badge, and your attached session know nothing about it. The extension reconciles
+with the server on every refresh: when it finds your debug mode gone, it tells you
+<strong>debug mode was lost</strong> and offers to <strong>re-enable</strong> it. Accept, re-attach if needed,
+and carry on. (After a full stack recreate on a Linux host, you may also need to
+re-apply the PDB patch — next section.)</p>
+<h2 id="linux-mes-hosts-the-pdb-prerequisite">Linux MES hosts: the PDB prerequisite<a class="headerlink" href="#linux-mes-hosts-the-pdb-prerequisite" title="Permanent link">¶</a></h2>
+<p>MES releases up to <strong>11.x</strong> have a product bug (#158143) that breaks DEE debug mode on
+<strong>Linux-containerized hosts</strong> (the default for local stacks): the host generates debug
+symbols in a Windows-only format, so executing an action in debug mode fails with an
+error like the one below. <strong>MES 12 images already contain the fix</strong>; the probe described
+here simply reports them as fine.</p>
+<div class="highlight"><pre><span></span><code>The Action &lt;name&gt; code is invalid: … Unexpected error writing debug information --
+'Value cannot be null. (Parameter 'type')'
+</code></pre></div>
+<p>On an affected host the extension can patch it for you: run
+<strong>DEE Debugger: Patch Host for DEE Debugging (dev/test)…</strong>. It flips the one setting in
+the host's <code>Cmf.Foundation.Common.dll</code> to emit the cross-platform PortablePdb format,
+backs up the original (<code>.orig</code>), and restarts the host. The patcher runs inside the
+container, under the host's own .NET runtime.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/debugging_mermaid_1_4c11d99f.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/debugging_mermaid_1_4c11d99f.svg"></a></p>
+<ul>
+<li><strong>You are told up front.</strong> Before enabling debug mode on a containerized host, and before
+  attaching, the extension probes the host (a read-only run of the bundled patcher) and, if
+  the host still emits Windows-only symbols, asks <strong>Patch Host for Debugging</strong> / <strong>Continue
+  Anyway</strong>. Without this, the failure happens out of sight: you trigger the action from the
+  MES UI, the host fails to compile the debug build, and your breakpoint simply never binds.
+  The attach-time warning does not block (custom-business DLL breakpoints need no patch), and
+  the "breakpoints have not bound" notice also carries the patch button when the host is known
+  to be unpatched. Set <code>deeDebugger.hostPatchCheck</code> to <code>off</code> to skip the probe.</li>
+<li>When a debug execute fails with the error above, the error notification offers a
+  <strong>Patch Host for Debugging…</strong> button directly.</li>
+<li>It's a <strong>dev/test-only</strong> action (it modifies a product assembly). Run directly, the
+  command asks you to confirm (<strong>Patch host</strong>); from one of the prompts above, your click
+  counts as that confirmation. The same non-local-host warning as attach applies.</li>
+<li><strong>Docker / docker-in-docker</strong> hosts are restarted automatically; on <strong>Kubernetes /
+  OpenShift</strong> the command patches and then tells you the <code>rollout restart</code> to run.</li>
+<li>Undo any time with <strong>Restore Host DLL (undo debug patch)…</strong>.</li>
+<li>Set <code>deeDebugger.hostAppDir</code> if your host keeps the app somewhere other than <code>/opt/app</code>.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> The patch lives in the container's writable layer. Recreating the stack
+(<code>cmf dev local stack down</code> / <code>up</code>) reverts it — just run the patch command again. A
+plain restart keeps the patch but clears debug registrations (previous section).
+The manual <code>tools/host-pdb-patcher</code> tool remains for scripted/CI use.</p>
+</blockquote>
+<h2 id="load-balanced-environments">Load-balanced environments<a class="headerlink" href="#load-balanced-environments" title="Permanent link">¶</a></h2>
+<p>If the environment runs several host instances behind a load balancer, your debug
+registration and your attach both live on <strong>one</strong> instance — but the balancer may send
+executions to another, where the stored version runs and no breakpoint exists. Point
+your environment's host address directly at a single instance while debugging.</p>
+<p>On <strong>Kubernetes/OpenShift</strong> this is the default posture whenever the host deployment
+has more than one replica — <em>four</em> things must land on the same replica (the
+activation call, the pushed file, the trigger, and the attached debugger). Either
+scale to one replica while debugging
+(<code>kubectl scale deployment/host --replicas=1 -n &lt;namespace&gt;</code>) or pin everything to one
+pod with <code>kubectl port-forward</code> — the recipe and a diagram of the failure mode are in
+<a href="../how-debugging-works/#multi-replica-clusters-why-pinning-is-mandatory">How debugging works</a>.</p>
+<h2 id="attaching-for-custom-business-debugging">Attaching for custom business debugging<a class="headerlink" href="#attaching-for-custom-business-debugging" title="Permanent link">¶</a></h2>
+<p>Everything above debugs <strong>DEE Actions</strong> — C# rules stored in the MES database. But an MES
+customization also has <strong>custom business projects</strong>: <code>Cmf.Custom.&lt;tenant&gt;.*</code> code compiled
+into DLLs and deployed into the host image (<code>Cmf.Custom.Business</code> is only the folder holding
+<code>Business.sln</code> — the assemblies themselves carry the tenant in the name).</p>
+<p><strong>The same command debugs both.</strong> <strong>DEE Debugger: Attach Debugger to MES Host</strong> attaches the
+stock <code>coreclr</code> debugger to the MES host <strong>once</strong>, with a source map that covers <em>both</em> DEE
+temp files <em>and</em> your deployed business DLLs — so a breakpoint binds wherever the matching code
+runs. You no longer choose "which attach"; you attach and set breakpoints where you need them.
+For the full contrast see <a href="../dee-vs-business-debugging/">DEE vs custom-business debugging</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Breakpoint in…</th>
+<th>Binds against</th>
+<th>Source map (merged automatically)</th>
+<th>Edit loop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A <strong>DEE Action</strong></td>
+<td>the host-compiled local file (Debug Mode on)</td>
+<td>the DEE temp folder</td>
+<td>live-compile — edit, save, re-trigger</td>
+</tr>
+<tr>
+<td>A <strong><code>Cmf.Custom.&lt;tenant&gt;.*</code> DLL</strong></td>
+<td>the <strong>deployed</strong> assembly</td>
+<td>the paths recorded in its PDB (<code>deeDebugger.hostSourceMap</code> only if it was built elsewhere)</td>
+<td>rebuild + redeploy + re-attach</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Two different edit loops, one attach</p>
+<p>DEE debugging <strong>hot-reloads</strong> — the host recompiles your file on every trigger (see the
+<a href="#the-mental-model">mental model</a>). Custom-business breakpoints bind against the
+<strong>already-deployed binary</strong>: there is <strong>no hot-reload</strong> — rebuild in Debug, redeploy
+with <code>cmf dev local stack up</code>, then re-attach (see <a href="#the-three-prerequisites">the prerequisites</a>). The single attach carries both source maps, so
+you can hold breakpoints in both at the same time. (<em>Enable DEE Debug Mode</em> is still what
+makes the host run your local DEE file; business DLLs need no such registration.)</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/debugging_mermaid_2_4e037c76.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/debugging_mermaid_2_4e037c76.svg"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Platform code has no source</p>
+<p>The host makes <strong>every <code>Cmf.*</code> assembly</strong> debuggable — platform (<code>Cmf.Foundation.*</code>, <code>Cmf.*</code>)
+as well as your <code>Cmf.Custom.*</code>. You only have source for <strong>your customization</strong>, so a
+breakpoint binds only in <code>Cmf.Custom.*</code>; stepping into product <code>Cmf.*</code> shows "no source
+available" (expected). Attach uses <code>justMyCode: false</code>, so <strong>Step Over</strong> to stay in your code.
+See <a href="../dee-vs-business-debugging/#which-assemblies-are-debuggable-and-which-you-have-source-for">DEE vs custom-business debugging → which assemblies are debuggable</a>.</p>
+</div>
+<h3 id="how-business-breakpoints-find-your-source">How business breakpoints find your source<a class="headerlink" href="#how-business-breakpoints-find-your-source" title="Permanent link">¶</a></h3>
+<p>A portable PDB records the path of every source file <strong>as it was when the DLL was built</strong>, and
+the debugger opens that path. A local <code>cmf build</code> records your repo's absolute paths (cmf-cli sets
+no <code>PathMap</code>), for example <code>/path/to/&lt;project&gt;/Cmf.Custom.Business/Cmf.Custom.Orchestration/Foo.cs</code>.
+When VS Code sees your repo at that same path — the usual devcontainer and WSL layout — business
+breakpoints bind with <strong>no source map at all</strong>.</p>
+<div class="highlight"><pre><span></span><code>   path recorded in the PDB                         where your source is now
+   ─────────────────────────────────────────       ─────────────────────────────────
+   /path/to/proj/Cmf.Custom.Business/…/Foo.cs    =  /path/to/proj/…/Foo.cs       → binds, no map
+   /agent/_work/proj/Cmf.Custom.Business/…/Foo.cs → map { "/agent/_work/proj": "${workspaceFolder}" }
+</code></pre></div>
+<ul>
+<li>Set <strong><code>deeDebugger.hostSourceMap</code></strong> only when the recorded root differs from where your source
+  lives now: the DLL was built in another folder or container, on a CI agent, or inside a
+  container at <code>/src</code> (how Critical Manufacturing builds the platform itself). Map the recorded root to your repo root.</li>
+<li>Leave it empty to use the default <code>{ "/src": "${workspaceFolder}" }</code>, which covers <code>/src</code>
+  container builds and is a harmless no-op for everything else.</li>
+<li>The recorded root is simply the repo's path on the machine or container that ran <code>cmf build</code>.
+  Opening a sub-folder of the same repo doesn't matter — the recorded paths are absolute.</li>
+</ul>
+<h3 id="running-it-step-by-step">Running it, step by step<a class="headerlink" href="#running-it-step-by-step" title="Permanent link">¶</a></h3>
+<p>Run <strong>DEE Debugger: Attach Debugger to MES Host</strong> — from the Command Palette (<code>Ctrl+Shift+P</code>),
+the debug icon in the DEE Explorer title bar, or the <strong>Attach Debugger</strong> button in the dialog
+that follows <strong>Enable DEE Debug Mode</strong>. It's the same command everywhere. Before it attaches,
+the extension walks a few checks:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/debugging_mermaid_3_c0342963.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/debugging_mermaid_3_c0342963.svg"></a></p>
+<ol>
+<li><strong>C# extension</strong> must be installed (it ships with this extension); if it's missing you get an
+   <strong>[Install C# extension]</strong> button.</li>
+<li>An <strong>environment must be selected</strong>; if none is, an <strong>[Switch Environment…]</strong> button takes you
+   there. (No MES sign-in / token is needed for the attach <em>itself</em> — attach is lower-privilege
+   than DEE debug mode. You still select an environment because that's how the extension knows
+   which host to reach.)</li>
+<li>Attaching to a <strong>non-local host</strong> asks you to confirm the privileged-attach warning
+   (<strong>Continue</strong>).</li>
+<li>The <strong>first time only</strong>, a prerequisites primer lists what makes a breakpoint bind, for DEE
+   actions and for business code (the three business prerequisites are below). Choose
+   <strong>Attach</strong> to go on, or <strong>Open guide</strong> to read the guide first (this cancels the attach).
+   Once you have answered it with either button, it doesn't show again.</li>
+<li>On a containerized host, the extension probes for the
+   <a href="#linux-mes-hosts-the-pdb-prerequisite">Linux PDB prerequisite</a>. If the host is unpatched
+   you get a warning with <strong>Patch Host for Debugging</strong>, but the attach continues.</li>
+</ol>
+<p>You're attached when the debug toolbar appears. Set breakpoints in your <code>Cmf.Custom.*</code> code —
+they bind when the deployed code runs. If none of your enabled breakpoints has bound 8 seconds
+after the attach, the extension shows the likely causes with <strong>Show Log</strong> / <strong>Open guide</strong>
+buttons (plus <strong>Patch Host for Debugging</strong> when the host is known to be unpatched). DEE
+breakpoints whose action hasn't run yet also count as unbound here.</p>
+<h3 id="the-three-prerequisites">The three prerequisites<a class="headerlink" href="#the-three-prerequisites" title="Permanent link">¶</a></h3>
+<p>Custom-business attach has no code of its own on the host — it binds against whatever is deployed,
+so all three of these must already be true:</p>
+<ol>
+<li><strong>The DLLs and PDBs are deployed</strong> into the host image. <code>cmf dev local stack up</code> builds the
+   host image from the base MES image plus a copy of <strong><code>LocalEnvironment/BusinessTier</code></strong>, and
+   recreates the host container when that image changed (it does after a new build) — it
+   compiles nothing. That folder is the output of a <strong>Debug</strong>
+   build: <code>cmf build --test</code> (its test step builds Debug) or <code>dotnet build Cmf.Custom.Business/Business.sln</code>.
+   A plain <code>cmf build</code> builds <strong>Release</strong> into <code>Cmf.Custom.Business/Release/</code> and does not change
+   what <code>stack up</code> deploys. Recreating the container also removes <code>vsdbg</code> (and, on 11.x, the host
+   patch) and drops DEE debug registrations — the extension offers each again. Attach itself
+   does <strong>not</strong> build or deploy anything.</li>
+<li><strong>The PDBs are portable-format.</strong> The debugger on a Linux host reads only portable PDBs.
+   <code>cmf build</code> already emits portable PDBs for your DLLs. The host patch
+   (<a href="#linux-mes-hosts-the-pdb-prerequisite">Linux PDB prerequisite</a>, #158143) is a different
+   fix: it changes only how the host compiles DEE actions, not your DLLs' PDBs.</li>
+<li><strong>The recorded source paths resolve</strong> — automatic when you build and debug at the same
+   path; otherwise set <code>deeDebugger.hostSourceMap</code> (see above).</li>
+</ol>
+<p>While paused, the <a href="#while-you-are-paused-everything-freezes">whole host freezes</a> exactly as with
+DEE debugging, and <a href="#load-balanced-environments">load-balanced / multi-replica</a> environments need
+the same pinning.</p>
+<h2 id="how-it-all-works-under-the-hood">How it all works under the hood<a class="headerlink" href="#how-it-all-works-under-the-hood" title="Permanent link">¶</a></h2>
+<p>Curious why debug mode is per-user, why restarts lose it, or what the host actually
+compiles? <a href="../how-debugging-works/">How debugging works</a> walks the client and host
+internals with diagrams.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../tutorial-first-dee-debug/">Tutorial: your first DEE debug session</a> — this whole
+  loop, guided.</li>
+<li><a href="../troubleshooting/#debugging-problems">Troubleshooting</a> — attach failures, unbound
+  breakpoints, and the Linux compile error.</li>
+<li><a href="../faq/">FAQ</a> — per-user semantics questions.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

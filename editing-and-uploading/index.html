@@ -1,0 +1,1222 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Browse, edit, sync and debug Critical Manufacturing MES DEE Actions from VS Code.">
+      
+      
+      
+      
+        <link rel="prev" href="../environments/">
+      
+      
+        <link rel="next" href="../debugging/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Editing &amp; uploading - DEE Debugger for VS Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#editing-and-uploading-actions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DEE Debugger for VS Code" class="md-header__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DEE Debugger for VS Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Editing &amp; uploading
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DEE Debugger for VS Code" class="md-nav__button md-logo" aria-label="DEE Debugger for VS Code" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    DEE Debugger for VS Code
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/criticalmanufacturing/vscode-dee-debugger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-first-dee-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial — your first DEE debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing &amp; uploading
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing &amp; uploading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#opening-an-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening an action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deedevbase-files-working-copies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeeDevBase files: working copies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a new action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drafts-versions-that-are-not-effective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drafts: versions that are not effective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-marker-contract-what-you-may-and-may-not-edit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The marker contract: what you may and may not edit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The marker contract: what you may and may not edit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#need-another-assembly-usereference-not-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need another assembly? UseReference, not using
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-in-scope-inside-the-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's in scope inside the markers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-ways-to-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three ways to save
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency-conflicts-someone-else-changed-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concurrency conflicts (someone else changed it)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reloading-from-the-mes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reloading from the MES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trying-an-action-without-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trying an action without side effects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dee-vs-business-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DEE vs business debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-debugging-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How debugging works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#opening-an-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening an action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deedevbase-files-working-copies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeeDevBase files: working copies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a new action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drafts-versions-that-are-not-effective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drafts: versions that are not effective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-marker-contract-what-you-may-and-may-not-edit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The marker contract: what you may and may not edit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The marker contract: what you may and may not edit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#need-another-assembly-usereference-not-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need another assembly? UseReference, not using
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-in-scope-inside-the-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's in scope inside the markers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-ways-to-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three ways to save
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency-conflicts-someone-else-changed-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concurrency conflicts (someone else changed it)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reloading-from-the-mes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reloading from the MES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trying-an-action-without-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trying an action without side effects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="editing-and-uploading-actions">Editing and uploading actions<a class="headerlink" href="#editing-and-uploading-actions" title="Permanent link">¶</a></h1>
+<p>This page covers the single-action editing loop: open, edit safely, save back to the
+MES, and deal with compile errors, versions, and conflicts. For bulk operations across
+your whole project, see <a href="../sync/">Sync</a>.</p>
+<h2 id="opening-an-action">Opening an action<a class="headerlink" href="#opening-an-action" title="Permanent link">¶</a></h2>
+<p>Click an action in the <strong>DEE Explorer</strong>. The extension looks for <code>&lt;ActionName&gt;.cs</code> in your
+DEEs folders, subfolders included, and opens the right file:</p>
+<ul>
+<li><strong>You already have the file in the MES format</strong> (the generated markers): it opens in place,
+  wherever it lives. If its code differs from the MES version, a notice offers <strong>Compare</strong> and
+  <strong>Reload from MES</strong>. Opening never replaces your file with the MES version on its own.</li>
+<li><strong>You have the file in the cmf-cli <code>DeeDevBase</code> format</strong>: your file is not touched. A working
+  copy opens instead (see <a href="#deedevbase-files-working-copies">DeeDevBase files: working copies</a>).</li>
+<li><strong>You have no file yet</strong>: the extension downloads the action as <code>&lt;ActionName&gt;.cs</code> into your
+  primary DEEs folder.</li>
+</ul>
+<p>The DEEs folders are auto-detected: every folder that contains <code>DeeDevBase.cs</code>, one per Data
+package. You can also list them in the <strong>deeDebugger.deesFolder</strong> setting; the first one is the
+primary folder. A downloaded file is a complete, compilable C# file: <code>using</code> directives, a
+generated wrapper class, and — inside four marker comments — your action code and test
+condition.</p>
+<p>If two Data packages both contain <code>&lt;ActionName&gt;.cs</code>, the extension doesn't guess: it lists both
+files and asks you to keep one, or to limit <strong>deeDebugger.deesFolder</strong> to one package. It also
+never overwrites a file of that name that has damaged markers; fix or move the file first.</p>
+<p>If your workspace contains the standard Actions project (<code>Cmf.Custom.Data/DEEs</code> with
+its <code>.csproj</code> and <code>DeeDevBase.cs</code>), the C# extension gives you IntelliSense,
+navigation, and local squiggles on these files automatically.</p>
+<h2 id="deedevbase-files-working-copies">DeeDevBase files: working copies<a class="headerlink" href="#deedevbase-files-working-copies" title="Permanent link">¶</a></h2>
+<p>Projects created with cmf-cli often keep DEEs in the <code>DeeDevBase</code> format
+(<code>//---Start DEE Code---</code> markers and a <code>DeeDevBase</code> base class). The MES host can only debug
+the MES format, and it rewrites the file it debugs. So the extension never edits or debugs a
+<code>DeeDevBase</code> file directly:</p>
+<ol>
+<li>Opening the action creates a <strong>working copy</strong> in the MES format, with your file's code,
+   under <code>.dee-debug/</code> at the root of your workspace. The path below <code>.dee-debug/</code> mirrors your
+   file's path, so files in different packages never collide.</li>
+<li>You edit, save to the MES and debug the working copy, exactly like any other DEE file.</li>
+<li>After each successful <strong>Save Action to MES</strong>, the extension offers <strong>Write Back</strong>. It copies
+   the code into your <code>DeeDevBase</code> file and keeps that file's layout and line endings. You can
+   also run <strong>Write Code Back to Source File</strong> from the editor title or the action's
+   right-click menu at any time.</li>
+<li>If you edit and save the <code>DeeDevBase</code> file itself, its code is copied into the working copy.
+   With debug mode on, that change is pushed to the host as usual.</li>
+</ol>
+<p><code>.dee-debug/</code> contains its own <code>.gitignore</code>, so working copies are never committed. It sits
+outside every <code>DEEs</code> folder, so <code>cmf build</code> never packages them. Commit only your <code>DeeDevBase</code>
+file.</p>
+<h2 id="creating-a-new-action">Creating a new action<a class="headerlink" href="#creating-a-new-action" title="Permanent link">¶</a></h2>
+<p>Click <strong>＋ New DEE Action…</strong> in the DEE Explorer title (or run it from the Command
+Palette). You are asked for:</p>
+<ol>
+<li><strong>Name</strong> — a C# identifier (letters, digits, underscores; starts with a letter), unique
+   on this MES. The host enforces the same rule, so invalid names are rejected before any
+   call is made.</li>
+<li><strong>Description</strong> (optional) and a <strong>classification</strong> — pick one already in use or type a
+   new one.</li>
+<li>Whether to <strong>create and make effective</strong> (recommended) or <strong>create as draft</strong>.</li>
+</ol>
+<p>The action is created exactly like the MES UI wizard does (enabled, the standard starter
+template, <code>return true;</code> as the test condition), then downloaded and opened as
+<code>&lt;Name&gt;.cs</code>. One thing the extension does not do: <strong>add the action to an action group</strong> —
+do that in Administration → DEE Actions, otherwise the MES has no extension point from
+which to invoke it.</p>
+<h2 id="drafts-versions-that-are-not-effective">Drafts: versions that are not effective<a class="headerlink" href="#drafts-versions-that-are-not-effective" title="Permanent link">¶</a></h2>
+<p>The MES keeps every version of an action, and at most <strong>one version is <em>effective</em></strong>.
+Which version <strong>runs</strong> follows one rule: the effective version if there is one, otherwise
+the <strong>highest</strong> version. A freshly created action (either side) is stored as <strong>version 1
+in state Active, not effective</strong> — and because no other version exists, the MES already
+runs it.</p>
+<p>A version that isn't effective (a <em>draft</em>) is skipped only while another version is
+effective — for example a version you staged with <strong>Save as New Version…</strong> (keep current
+effective). The flip side: while no version is effective, a version staged later takes over
+immediately. That is why it pays to make a version effective.</p>
+<p>The tree shows a draft row with a <code>not effective (Active)</code> badge and a warning-coloured
+icon, and offers <strong>Make Version Effective</strong> (inline ✓ or right-click). Saving into a draft
+says whether the MES runs it and offers the same action.</p>
+<h2 id="the-marker-contract-what-you-may-and-may-not-edit">The marker contract: what you may and may not edit<a class="headerlink" href="#the-marker-contract-what-you-may-and-may-not-edit" title="Permanent link">¶</a></h2>
+<p>Every downloaded file contains four marker lines — the action code first, then the
+test condition:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/** START OF USER-DEFINED CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/</span>
+<span class="c1">// … your action code …</span>
+<span class="cm">/** END OF USER-DEFINED CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/</span>
+
+<span class="cm">/** START OF USER-DEFINED VALIDATION CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/</span>
+<span class="c1">// … your test condition (must end in a return statement, e.g. return true;) …</span>
+<span class="cm">/** END OF USER-DEFINED VALIDATION CODE (DO NOT CHANGE OR DELETE THIS LINE!) **/</span>
+</code></pre></div>
+<p><strong>Only the code between a START and its END marker belongs to you.</strong> Everything
+else — the <code>using</code> block, the class declaration, the method signatures — is a wrapper
+the server generates and will regenerate.</p>
+<blockquote>
+<p><strong>Warning — this is the #1 way to lose work.</strong> Edits <strong>outside</strong> the markers are
+not uploaded (only the marker bodies are sent to the MES). And while debug mode is
+on, the host rewrites its copy of the file with a freshly generated wrapper whenever
+yours differs; the extension pulls that rewrite into <strong>your local file</strong>, discarding your
+out-of-marker edits (it tells you when it does). Never edit the wrapper, never delete,
+duplicate, or add text on a marker line. The extension checks the markers before
+every upload and refuses with a specific message if they are damaged; if that
+happens, don't repair by hand — copy your body code somewhere safe, run
+<strong>Reload Action from MES</strong> to restore a clean wrapper, and paste your code back
+inside the markers.</p>
+</blockquote>
+<h3 id="need-another-assembly-usereference-not-using">Need another assembly? <code>UseReference</code>, not <code>using</code><a class="headerlink" href="#need-another-assembly-usereference-not-using" title="Permanent link">¶</a></h3>
+<p>Since you can't touch the <code>using</code> block, reference additional assemblies from
+<strong>inside</strong> the action-code markers:</p>
+<div class="highlight"><pre><span></span><code><span class="n">UseReference</span><span class="p">(</span><span class="s">"Cmf.Navigo.BusinessObjects.dll"</span><span class="p">,</span><span class="w"> </span><span class="s">"Cmf.Navigo.BusinessObjects"</span><span class="p">);</span>
+</code></pre></div>
+<p>The first argument is the assembly, the second the namespace to import. This is the
+supported mechanism; a hand-added <code>using</code> line above the markers is exactly the edit
+the host's rewrite will erase.</p>
+<div class="admonition note">
+<p class="admonition-title">Keep the exact spacing if you package DEEs with <code>cmf build</code></p>
+<p>The Data package's build step validates every DEE file and rejects a <code>UseReference</code>
+call with any whitespace beyond the single space after the comma — write it exactly
+as <code>UseReference("x.dll", "y");</code>. The MES host itself is not that strict, so code
+that compiles on the MES can still fail <code>cmf build</code>.</p>
+</div>
+<h3 id="whats-in-scope-inside-the-markers">What's in scope inside the markers<a class="headerlink" href="#whats-in-scope-inside-the-markers" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>Input</code> — a <code>Dictionary&lt;string, object&gt;</code> carrying the operation's data.</li>
+<li><code>Input["ServiceProvider"]</code> — the DI service provider for resolving MES services.</li>
+<li>In the validation block, you must end with a <code>return</code> of a boolean (whether the
+  action code should run).</li>
+</ul>
+<h2 id="the-three-ways-to-save">The three ways to save<a class="headerlink" href="#the-three-ways-to-save" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/editing-and-uploading_mermaid_0_54e4ca0f.svg" data-desc-position="bottom"><img alt="Mermaid Diagram" src="../assets/images/editing-and-uploading_mermaid_0_54e4ca0f.svg"></a></p>
+<table>
+<thead>
+<tr>
+<th>What you do</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ctrl+S</strong> (save the file)</td>
+<td>Saves <strong>locally only</strong>. The MES is untouched. The tree shows a <strong>pending upload</strong> badge on the action. (Exception: with debug mode ON, saving also pushes your file to the host for <em>your</em> executions only — see <a href="../debugging/#the-mental-model">Debugging</a>.)</td>
+</tr>
+<tr>
+<td><strong>Save Action to MES (Compile &amp; Save)</strong> — the cloud-upload icon on the action's row (hover), or the Command Palette</td>
+<td>Compiles your marker bodies on the MES and <strong>overwrites the current version</strong> of the action for <strong>all users</strong>. This is the normal "publish my change" step. Success is confirmed briefly in the status bar and the <em>pending upload</em> badge clears; if the saved version is a draft you are offered <strong>Make Effective</strong>.</td>
+</tr>
+<tr>
+<td><strong>Save Action to MES as New Version…</strong> — right-click the action</td>
+<td>Compiles and saves as a <strong>new version</strong> of the action, leaving the previous version intact in the history. You choose whether the new version becomes <strong>effective</strong> (the one the MES actually runs) immediately, or is stored without activating it.</td>
+</tr>
+</tbody>
+</table>
+<p>Versioning semantics in short: the MES keeps every version of an action; exactly one
+version is <em>effective</em> at a time. <strong>Save Action to MES</strong> updates, in place, the version
+you are working on: the one you opened (the effective one, or the draft when no version is
+effective yet) — or, after <strong>Save as New Version…</strong>, that new version. If it is a draft,
+you are offered <strong>Make Effective</strong>. <strong>Reload Action from MES</strong> puts you back on the version
+shown in the tree.
+<strong>Save as New Version…</strong> is the safer choice for significant changes on shared
+environments — it preserves a rollback point, and "save but don't make effective" lets
+you stage a change without changing behavior. Browse and diff old versions any time with
+<strong>Show Version History…</strong> (right-click the action); a staged Active version can be
+promoted from there with <strong>Make vN Effective</strong>.</p>
+<h2 id="compile-errors">Compile errors<a class="headerlink" href="#compile-errors" title="Permanent link">¶</a></h2>
+<p>When the MES rejects your upload, the compile errors appear:</p>
+<ul>
+<li>as entries in VS Code's <strong>Problems</strong> panel, mapped onto the correct lines of your
+  local file (inside the right marker region), and</li>
+<li>as squiggles in the editor.</li>
+</ul>
+<p>Fix the code and upload again; a clean save clears the diagnostics. The raw server
+response is also written to the <strong>DEE Debugger</strong> output channel if you need the
+unmapped original.</p>
+<h2 id="concurrency-conflicts-someone-else-changed-it">Concurrency conflicts (someone else changed it)<a class="headerlink" href="#concurrency-conflicts-someone-else-changed-it" title="Permanent link">¶</a></h2>
+<p>If the action changed on the MES after you loaded it — a colleague uploaded, or you
+edited it in the MES UI — your upload is refused and a dialog explains that the action
+<strong>was changed on the MES since it was loaded</strong>:</p>
+<ul>
+<li><strong>Overwrite</strong> — pushes <em>your</em> marker bodies over the newer server version (their
+  wrapper is refetched, so only the bodies are at stake).</li>
+<li><strong>Cancel</strong> — leaves the server untouched, so you can open a diff first (see
+  <a href="../sync/#comparing-local-vs-mes">Sync: compare</a>) or reload and re-apply your change.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Before overwriting, consider <strong>Show Version History…</strong> to see what you'd
+be replacing — or use <strong>Save Action to MES as New Version…</strong> so nothing is lost.</p>
+</blockquote>
+<h2 id="reloading-from-the-mes">Reloading from the MES<a class="headerlink" href="#reloading-from-the-mes" title="Permanent link">¶</a></h2>
+<p>Right-click → <strong>Reload Action from MES</strong> (or the discard icon on the row) replaces
+your local file with the server's current content. A confirmation dialog always comes
+first, because <strong>Reload</strong> discards any pending local changes. This is also the standard fix for a
+broken wrapper or damaged markers.</p>
+<p>If the file is open with <strong>unsaved</strong> changes in the editor, reload (and sync
+download) will not silently clobber it — see
+<a href="../sync/#dirty-editor-protection">dirty-editor protection</a>.</p>
+<p>For a <code>DeeDevBase</code> file, <strong>Reload</strong> replaces only the working copy. Use <strong>Write Code Back to
+Source File</strong> afterwards if your repository file should take the MES version too.</p>
+<h2 id="trying-an-action-without-side-effects">Trying an action without side effects<a class="headerlink" href="#trying-an-action-without-side-effects" title="Permanent link">¶</a></h2>
+<p><strong>Execute Action…</strong> (right-click the action) runs it ad hoc with a JSON input
+dictionary you provide:</p>
+<ul>
+<li><strong>Read-only execution</strong> runs the code without persisting side effects — good for a
+  quick check.</li>
+<li><strong>Full execution</strong> behaves like the real thing and asks for confirmation first.</li>
+</ul>
+<p>The result opens as a JSON report with the input, the decoded output, and the
+duration.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../debugging/">Debugging</a> — breakpoints, hot reload, and how debug mode changes
+  what "save" means.</li>
+<li><a href="../sync/">Sync</a> — bulk compare/upload/download and the git workflow.</li>
+<li><a href="../troubleshooting/#uploads-and-compile-errors">Troubleshooting</a> — upload failures
+  that aren't compile errors (hint: expired token).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
