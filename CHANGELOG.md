@@ -1,11 +1,20 @@
 # Changelog
 
+## 0.3.1 — 2026-11-10
+
+First release on the
+[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.cm-dee-debugger),
+as a pre-release. 0.3.0 is available only from GitHub Releases.
+
+### Changed
+- **The display name is now "Critical Manufacturing DEE Debugger"** (was "DEE Debugger for
+  Critical Manufacturing MES"). The Marketplace still treated the old name as taken by an
+  earlier upload under the previous extension ID. Nothing else changes.
+
 ## 0.3.0 — 2026-11-06
 
 DEE files in subfolders, in several Data packages, and in the cmf-cli `DeeDevBase` format
-([ADR 0012](docs/adr/0012-dee-files-in-subfolders.md)). First release on the
-[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.cm-dee-debugger),
-as a pre-release.
+([ADR 0012](docs/adr/0012-dee-files-in-subfolders.md)).
 
 ### Upgrading
 - **The extension ID is now `CriticalManufacturing.cm-dee-debugger`** (was

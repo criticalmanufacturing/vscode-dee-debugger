@@ -40,8 +40,8 @@ flowchart LR
 
 ## Step 1 — Install the extension
 
-In the Extensions view, search for **DEE Debugger**, open **DEE Debugger for Critical
-Manufacturing MES** by Critical Manufacturing, and select **Install**. Or, from a terminal:
+In the Extensions view, search for **DEE Debugger**, open **Critical Manufacturing DEE
+Debugger** by Critical Manufacturing, and select **Install**. Or, from a terminal:
 
 ```bash
 code --install-extension CriticalManufacturing.cm-dee-debugger --pre-release
