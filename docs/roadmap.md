@@ -35,9 +35,10 @@ LICENSE (then a placeholder; `LICENSE.md` is now BSD-3-Clause), CHANGELOG, no-te
 VS Code e2e suite in CI, tag-triggered release pipeline (GitHub Release + opt-in
 marketplace publish via Trusted Publishing, GitHub OIDC).
 Repository home: GitHub, `criticalmanufacturing/vscode-dee-debugger`. Marketplace:
-`CriticalManufacturing.cm-dee-debugger`, a pre-release from 0.3.0 (first version uploaded
-manually; later versions publish from CI). 0.3.0 was first uploaded on 2026-11-09 as
-`dee-debugger`, then renamed.
+`CriticalManufacturing.cm-dee-debugger` ("Critical Manufacturing DEE Debugger"), a pre-release
+from 0.3.1, published from CI through Trusted Publishing. 0.3.0 was uploaded on 2026-11-09 as
+`dee-debugger` and later removed; its display name stayed reserved, so the new ID could not be
+published as 0.3.0 and the display name changed in 0.3.1.
 Open decisions (non-engineering): legal review of LICENSE.
 
 ## M6 — Browser sign-in (auth UX) — deferred

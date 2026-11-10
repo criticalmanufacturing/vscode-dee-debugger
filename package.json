@@ -1,8 +1,8 @@
 {
   "name": "cm-dee-debugger",
-  "displayName": "DEE Debugger for Critical Manufacturing MES",
+  "displayName": "Critical Manufacturing DEE Debugger",
   "description": "Browse, edit, sync and debug Critical Manufacturing MES DEE Actions and custom business code against a local or remote containerized host.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "CriticalManufacturing",
   "license": "BSD-3-Clause",
   "repository": {

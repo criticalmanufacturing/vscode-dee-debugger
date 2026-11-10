@@ -1,4 +1,4 @@
-# DEE Debugger for Critical Manufacturing MES
+# Critical Manufacturing DEE Debugger
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE.md)
 ![VS Code](https://img.shields.io/badge/VS%20Code-%E2%89%A5%201.145-007ACC.svg)
@@ -31,7 +31,7 @@ host runs. Successor to the DEE Explorer add-in for Visual Studio.
 
 ## Quick start
 
-1. Install **DEE Debugger for Critical Manufacturing MES** from the
+1. Install **Critical Manufacturing DEE Debugger** from the
    [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=CriticalManufacturing.cm-dee-debugger)
    (a pre-release while the version is 0.x), or from a terminal:
 
